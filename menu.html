@@ -3,22 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Menu</title>
+<title>منيو المشروبات</title>
 
 <style>
 body{
 margin:0;
-background:#f6efe8;
 font-family:"Cairo", sans-serif;
+background:#f6efe8;
 }
 
-/* شريط علوي */
+/* الشريط العلوي */
 .top-bar{
 background:#6b3e2e;
 color:#fff;
 padding:12px;
 text-align:center;
-font-size:18px;
+position:fixed;
+top:0;
+width:100%;
+z-index:10;
 }
 
 /* زر رجوع */
@@ -31,11 +34,36 @@ text-decoration:none;
 font-size:14px;
 }
 
-/* عرض PDF */
-iframe{
-width:100%;
-height:calc(100vh - 50px);
+/* أزرار التحكم */
+.controls{
+margin-top:60px;
+display:flex;
+justify-content:center;
+gap:10px;
+padding:10px;
+}
+
+button{
+padding:8px 14px;
 border:none;
+border-radius:10px;
+background:#8a5a44;
+color:#fff;
+font-size:14px;
+cursor:pointer;
+}
+
+/* عرض PDF */
+.viewer{
+display:flex;
+justify-content:center;
+}
+
+iframe{
+width:90%;
+height:80vh;
+border:none;
+transform-origin: top center;
 }
 </style>
 </head>
@@ -44,11 +72,41 @@ border:none;
 
 <div class="top-bar">
   <a href="index.html" class="back-btn">رجوع</a>
-  المنيو
+  منيو المشروبات
 </div>
 
-<!-- عرض الملف -->
-<iframe src="menu.pdf"></iframe>
+<!-- أزرار التكبير -->
+<div class="controls">
+  <button onclick="zoomIn()">تكبير +</button>
+  <button onclick="zoomOut()">تصغير -</button>
+  <button onclick="resetZoom()">إعادة</button>
+</div>
+
+<!-- عرض PDF -->
+<div class="viewer">
+  <iframe id="pdfViewer" src="menu.pdf"></iframe>
+</div>
+
+<script>
+let scale = 1;
+
+function zoomIn(){
+  scale += 0.1;
+  document.getElementById("pdfViewer").style.transform = `scale(${scale})`;
+}
+
+function zoomOut(){
+  if(scale > 0.5){
+    scale -= 0.1;
+    document.getElementById("pdfViewer").style.transform = `scale(${scale})`;
+  }
+}
+
+function resetZoom(){
+  scale = 1;
+  document.getElementById("pdfViewer").style.transform = `scale(1)`;
+}
+</script>
 
 </body>
 </html>
