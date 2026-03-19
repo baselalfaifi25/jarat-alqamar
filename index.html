@@ -15,7 +15,7 @@
 --bg:#f6efe8;
 }
 
-/* الخلفية */
+/* 🔥 خلفية نظيفة بدون تقطيع */
 body{
 margin:0;
 min-height:100vh;
@@ -23,39 +23,14 @@ display:flex;
 justify-content:center;
 align-items:center;
 font-family:"Cairo", sans-serif;
-background:linear-gradient(135deg,#f8f1ea,#e8d9cc);
-overflow-x:hidden;
+background:linear-gradient(135deg,#f8f1ea 0%,#efe3d8 50%,#e6d3c4 100%);
 padding:15px;
-}
-
-/* تأثير الخلفية */
-body::before,
-body::after{
-content:"";
-position:absolute;
-width:300px;
-height:300px;
-filter:blur(100px);
-opacity:0.25;
-z-index:-1;
-}
-
-body::before{
-background:#d9b59b;
-top:-80px;
-left:-80px;
-}
-
-body::after{
-background:#8a5a44;
-bottom:-80px;
-right:-80px;
 }
 
 /* الكرت */
 .container{
-backdrop-filter:blur(15px);
-background:rgba(255,255,255,0.4);
+backdrop-filter:blur(12px);
+background:rgba(255,255,255,0.45);
 border-radius:25px;
 padding:25px 15px;
 text-align:center;
@@ -180,7 +155,7 @@ border-radius:20px;
   <!-- الاسم -->
   <h1>مقهى جارة القمر</h1>
 
-  
+
 
   <!-- الأزرار -->
   <div class="menu-buttons">
