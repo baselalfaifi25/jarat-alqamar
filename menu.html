@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu</title>
+
+<style>
+body{
+margin:0;
+background:#f6efe8;
+font-family:"Cairo", sans-serif;
+}
+
+/* شريط علوي */
+.top-bar{
+background:#6b3e2e;
+color:#fff;
+padding:12px;
+text-align:center;
+font-size:18px;
+}
+
+/* زر رجوع */
+.back-btn{
+position:absolute;
+right:15px;
+top:12px;
+color:#fff;
+text-decoration:none;
+font-size:14px;
+}
+
+/* عرض PDF */
+iframe{
+width:100%;
+height:calc(100vh - 50px);
+border:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-bar">
+  <a href="index.html" class="back-btn">رجوع</a>
+  المنيو
+</div>
+
+<!-- عرض الملف -->
+<iframe src="menu.pdf"></iframe>
+
+</body>
+</html>
