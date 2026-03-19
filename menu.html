@@ -12,7 +12,7 @@ font-family:"Cairo", sans-serif;
 background:#f6efe8;
 }
 
-/* الشريط العلوي */
+/* الشريط */
 .top-bar{
 background:#6b3e2e;
 color:#fff;
@@ -24,24 +24,24 @@ width:100%;
 z-index:10;
 }
 
-/* زر رجوع */
+/* رجوع */
 .back-btn{
 position:absolute;
 right:15px;
 top:14px;
 color:#fff;
 text-decoration:none;
-font-size:14px;
 }
 
 /* عرض PDF */
 .viewer{
 margin-top:60px;
+height:calc(100vh - 60px);
 }
 
 iframe{
 width:100%;
-height:100vh;
+height:100%;
 border:none;
 }
 </style>
@@ -50,13 +50,12 @@ border:none;
 <body>
 
 <div class="top-bar">
-  <a href="index.html" class="back-btn">رجوع</a>
-  منيو المشروبات
+<a href="index.html" class="back-btn">رجوع</a>
+منيو المشروبات
 </div>
 
 <div class="viewer">
-  <!-- 🔥 هذا أهم سطر -->
-  <iframe src="https://docs.google.com/gview?url=menu.pdf&embedded=true"></iframe>
+  <iframe src="menu.pdf"></iframe>
 </div>
 
 </body>
