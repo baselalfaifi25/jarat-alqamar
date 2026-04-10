@@ -15,7 +15,6 @@
 --bg:#f6efe8;
 }
 
-/* 🔥 خلفية نظيفة بدون تقطيع */
 body{
 margin:0;
 min-height:100vh;
@@ -27,7 +26,6 @@ background:linear-gradient(135deg,#f8f1ea 0%,#efe3d8 50%,#e6d3c4 100%);
 padding:15px;
 }
 
-/* الكرت */
 .container{
 backdrop-filter:blur(12px);
 background:rgba(255,255,255,0.45);
@@ -40,13 +38,11 @@ box-shadow:0 15px 30px rgba(0,0,0,0.1);
 animation:fadeIn 0.8s ease;
 }
 
-/* أنيميشن */
 @keyframes fadeIn{
 from{opacity:0;transform:translateY(20px);}
 to{opacity:1;transform:translateY(0);}
 }
 
-/* الشعار */
 .logo{
 width:140px;
 margin:0 auto 15px;
@@ -57,28 +53,18 @@ width:100%;
 filter: brightness(0) saturate(100%) invert(18%) sepia(28%) saturate(800%) hue-rotate(350deg);
 }
 
-/* النص */
 h1{
 margin:5px 0;
 color:var(--primary);
 font-size:24px;
 }
 
-.tagline{
-font-family:"Amiri", serif;
-color:#5c4033;
-margin-bottom:20px;
-font-size:15px;
-}
-
-/* الأزرار */
 .menu-buttons{
 display:flex;
 flex-direction:column;
 gap:12px;
 }
 
-/* زر */
 .btn{
 padding:14px;
 border-radius:16px;
@@ -87,58 +73,25 @@ font-weight:bold;
 transition:0.3s;
 display:block;
 font-size:15px;
-}
-
-/* Menu */
-.btn-menu{
 background:linear-gradient(135deg,#6b3e2e,#8a5a44);
 color:#fff;
 }
 
-/* الحلويات */
-.btn-dessert{
+.btn-alt{
 background:linear-gradient(135deg,#8a5a44,#d9b59b);
 color:#fff;
 }
 
-/* واتساب */
-.btn-whatsapp{
-background:#fff;
-color:#6b3e2e;
-border:2px solid #d9b59b;
-}
-
-/* Hover */
 .btn:hover{
 transform:translateY(-3px);
 box-shadow:0 10px 20px rgba(0,0,0,0.2);
 }
 
-/* 📱 تحسين الجوال */
 @media (max-width:480px){
-
-.logo{
-width:120px;
-}
-
-h1{
-font-size:22px;
-}
-
-.tagline{
-font-size:14px;
-}
-
-.btn{
-font-size:14px;
-padding:13px;
-}
-
-.container{
-padding:20px 12px;
-border-radius:20px;
-}
-
+.logo{width:120px;}
+h1{font-size:22px;}
+.btn{font-size:14px;padding:13px;}
+.container{padding:20px 12px;border-radius:20px;}
 }
 </style>
 </head>
@@ -147,24 +100,33 @@ border-radius:20px;
 
 <div class="container">
 
-  <!-- الشعار -->
   <div class="logo">
     <img src="logo_clean.png" alt="شعار المقهى">
   </div>
 
-  <!-- الاسم -->
   <h1>مقهى جارة القمر</h1>
 
-
-
-  <!-- الأزرار -->
   <div class="menu-buttons">
 
-    <a href="menu.html" class="btn btn-menu">منيو المشروبات | Drinks Menu</a>
+    <a href="menu.html" class="btn">
+    منيو المشروبات | Drinks Menu
+    </a>
 
-    <a href="dessert.html" class="btn btn-dessert">منيو الحلويات | Dessert Menu</a>
+    <a href="dessert.html" class="btn btn-alt">
+    منيو الحلويات | Dessert Menu
+    </a>
 
-    <a href="https://wa.me/966507462033" target="_blank" class="btn btn-whatsapp">تواصل معنا | Contact us</a>
+    <a href="https://snapchat.com/t/sh2qHyb5" target="_blank" class="btn">
+    تابعونا على السناب | Follow us on Snapchat 
+    </a>
+
+    <a href="https://wa.me/966507462033" target="_blank" class="btn btn-alt">
+    تواصل معنا | Contact us
+    </a>
+
+    <a href="https://maps.app.goo.gl/UGFFr6wKCWECtzKR8?g_st=ic" target="_blank" class="btn">
+    تجدونا في📍| Find us on Google Maps 
+    </a>
 
   </div>
 
