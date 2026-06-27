@@ -2,235 +2,230 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>مقهى جارة القمر</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
-*{margin:0;padding:0;box-sizing:border-box;}
 
-body{
-  display:flex;justify-content:center;align-items:center;
-  min-height:100vh;
-  font-family:"Cairo",sans-serif;
-  background:linear-gradient(170deg,#fdfaf4 0%,#f9f1e4 55%,#f4e8d5 100%);
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: "Cairo", sans-serif;
+  background: #fdfaf4;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ==============================
-   احذف .phone-wrap و .screen
-   عند النشر الحقيقي على الجوال
-   ============================== */
-.phone-wrap{
-  width:375px;height:812px;
-  border-radius:48px;overflow:hidden;
-  box-shadow:0 40px 100px rgba(0,0,0,0.35),0 0 0 1px rgba(200,160,80,0.2);
+/* الحاوية الرئيسية المتجاوبة */
+.app-container {
+  width: 100%;
+  max-width: 412px;
+  height: 100vh;
+  max-height: 892px;
+  background: linear-gradient(135deg, #fdfaf4 0%, #f7ebd9 50%, #eddcc4 100%);
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-shadow: 0 30px 70px rgba(90, 48, 16, 0.15);
+  border-radius: 40px;
+  border: 4px solid rgba(212, 175, 100, 0.2);
 }
 
-.screen{
-  width:100%;height:100%;
-  background:linear-gradient(170deg,#fdfaf4 0%,#f9f1e4 55%,#f4e8d5 100%);
-  overflow-y:auto;overflow-x:hidden;
-  position:relative;
-  -webkit-overflow-scrolling:touch;
-}
-.screen::-webkit-scrollbar{display:none;}
-
-.bg-circle{position:absolute;border-radius:50%;pointer-events:none;z-index:0;}
-.bc1{width:300px;height:300px;top:-60px;right:-60px;background:radial-gradient(circle,rgba(212,175,100,0.07),transparent 70%);}
-.bc2{width:250px;height:250px;bottom:60px;left:-50px;background:radial-gradient(circle,rgba(180,130,70,0.05),transparent 70%);}
-
-/* هيرو */
-.hero{
-  display:flex;flex-direction:column;align-items:center;
-  padding:48px 22px 24px;
-  position:sticky;top:0;z-index:5;
-  background:linear-gradient(170deg,rgba(253,250,244,0.97),rgba(249,241,228,0.97));
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-  transition:padding 0.35s ease;
+@media (max-width: 480px) {
+  .app-container {
+    border-radius: 0;
+    border: none;
+    max-height: 100vh;
+  }
 }
 
-.logo-wrap{
-  width:110px;height:110px;
-  margin-bottom:12px;
-  transition:width 0.35s ease,height 0.35s ease,margin-bottom 0.35s ease;
-  flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;
-}
-.logo-wrap.small{width:60px;height:60px;margin-bottom:6px;}
+.app-container::-webkit-scrollbar { display: none; }
 
-.logo-icon{
-  font-size:48px;
-  color:rgba(155,105,35,0.85);
-  transition:font-size 0.35s;
+/* تأثير هالة القمر المتحركة */
+.moon-halo {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(60px);
+  animation: pulseHalo 8s infinite alternate ease-in-out;
 }
-.logo-wrap.small .logo-icon{font-size:28px;}
+.halo-1 { width: 350px; height: 350px; top: -90px; right: -90px; background: radial-gradient(circle, rgba(212,175,100,0.2) 0%, transparent 70%); }
+.halo-2 { width: 300px; height: 300px; bottom: -50px; left: -90px; background: radial-gradient(circle, rgba(155,105,35,0.12) 0%, transparent 70%); }
 
-/* لو عندك صورة شعار */
-.logo-wrap img{
-  width:100%;height:100%;
-  object-fit:contain;
-  transition:width 0.35s,height 0.35s;
+@keyframes pulseHalo {
+  0% { transform: scale(1) translate(0, 0); opacity: 0.8; }
+  100% { transform: scale(1.15) translate(-10px, 15px); opacity: 1; }
 }
 
-.name-ar{
-  font-size:22px;font-weight:800;color:#3a2008;
-  margin-bottom:2px;transition:font-size 0.35s ease;
+/* الهيدر الزجاجي الأسطوري */
+.hero {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 40px 24px 20px;
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(253, 250, 244, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(212, 175, 100, 0.15);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-.name-ar.small{font-size:16px;}
 
-.name-en{
-  font-size:10px;font-weight:600;
-  color:rgba(155,105,40,0.55);
-  letter-spacing:3.5px;text-transform:uppercase;
-  transition:opacity 0.25s,font-size 0.25s,margin 0.25s;
+.logo-wrap {
+  width: 110px; height: 110px;
+  margin-bottom: 12px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  background: linear-gradient(135deg, #ffffff, #fdfaf4);
+  box-shadow: 0 12px 24px rgba(155, 105, 35, 0.1);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-.name-en.hidden{opacity:0;font-size:0;margin:0;}
+.logo-wrap img { width: 75%; height: 75%; object-fit: contain; transition: all 0.4s; }
 
-.hero-line{
-  width:100%;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(200,160,80,0.2),transparent);
-  margin-top:16px;
-  transition:opacity 0.3s,margin 0.3s;
+/* تأثير السكرول */
+.hero.scrolled { padding: 12px 24px; box-shadow: 0 10px 30px rgba(90, 48, 16, 0.05); }
+.hero.scrolled .logo-wrap { width: 50px; height: 50px; margin-bottom: 0; border-radius: 50%; }
+.hero.scrolled .logo-wrap img { width: 65%; height: 65%; }
+.hero.scrolled .name-ar { font-size: 18px; margin-top: 4px; }
+.hero.scrolled .name-en, .hero.scrolled .hero-line { height: 0; opacity: 0; margin: 0; overflow: hidden; }
+
+.name-ar { font-size: 24px; font-weight: 800; color: #3a2008; transition: all 0.4s; }
+.name-en { font-size: 10px; font-weight: 600; color: rgba(155,105,40,0.6); letter-spacing: 3.5px; text-transform: uppercase; margin-top: 2px; transition: all 0.3s; }
+
+.hero-line {
+  width: 60px; height: 2px;
+  background: linear-gradient(90deg, transparent, #c8a050, transparent);
+  margin-top: 12px; border-radius: 2px; transition: all 0.3s;
 }
-.hero-line.hidden{opacity:0;margin-top:0;}
 
 /* المحتوى */
-.content{
-  position:relative;z-index:2;
-  padding:20px 20px 36px;
-  display:flex;flex-direction:column;
-  gap:10px;
+.content { position: relative; z-index: 2; padding: 20px 20px 30px; display: flex; flex-direction: column; gap: 16px; }
+
+.sep { display: flex; align-items: center; gap: 12px; margin: 5px 0; }
+.sep-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(200,160,80,0.3)); }
+.sep-line.r { background: linear-gradient(90deg, rgba(200,160,80,0.3), transparent); }
+.sep-diamond { width: 6px; height: 6px; background: #c8a050; transform: rotate(45deg); border-radius: 1px; animation: spinMoon 4s infinite linear; }
+
+@keyframes spinMoon { 100% { transform: rotate(405deg); } }
+
+/* الأزرار المحدثة للتوجيه الفضائي (الكلام يسار والرمز يمين) */
+.btn {
+  display: flex; 
+  align-items: center; 
+  flex-direction: row-reverse; /* لعكس ترتيب العناصر: الأيقونة يمين والكلام يسار */
+  justify-content: space-between;
+  padding: 0 20px; height: 66px;
+  border-radius: 20px; text-decoration: none;
+  position: relative; overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(254, 249, 241, 0.5) 100%);
+  border: 1.5px solid rgba(212, 175, 100, 0.25);
+  box-shadow: 0 8px 20px rgba(155, 105, 35, 0.04), inset 0 1px 2px rgba(255,255,255,0.8);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.sep{display:flex;align-items:center;gap:10px;margin-bottom:2px;}
-.sep-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,160,80,0.25));}
-.sep-line.r{background:linear-gradient(90deg,rgba(200,160,80,0.25),transparent);}
-.sep-diamond{width:5px;height:5px;background:rgba(200,160,80,0.4);transform:rotate(45deg);border-radius:1px;flex-shrink:0;}
-
-/* ===== الأزرار ===== */
-.btn{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 16px;height:58px;
-  border-radius:15px;
-  text-decoration:none;font-family:"Cairo",sans-serif;
-  border:1.5px solid transparent;
-  transition:background 0.28s ease,border-color 0.28s ease,box-shadow 0.28s ease,transform 0.18s ease;
-  position:relative;overflow:hidden;
-  -webkit-tap-highlight-color:transparent;
-  cursor:pointer;
+/* تأثير لمعة الشيمر */
+.btn::before {
+  content: ''; position: absolute; top: 0; right: -100%; width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transform: skewX(-25deg);
+  animation: shineEffect 4s infinite ease-in-out;
 }
-.btn::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(255,255,255,0.3) 0%,rgba(255,255,255,0) 55%);
-  pointer-events:none;
-  transition:opacity 0.28s;
+.btn-1::before { animation-delay: 0s; }
+.btn-2::before { animation-delay: 1.3s; }
+.btn-3::before { animation-delay: 2.6s; }
+
+@keyframes shineEffect {
+  0% { right: -100%; }
+  30% { right: 150%; }
+  100% { right: 150%; }
 }
 
-/* الحالة الفاتحة */
-.btn-1{
-  background:linear-gradient(130deg,#f5e6d3,#eeddd0);
-  border-color:rgba(200,160,80,0.22);
-  box-shadow:0 3px 14px rgba(180,130,70,0.1);
-}
-.btn-2{
-  background:linear-gradient(130deg,#f0dfd0,#e9d6c6);
-  border-color:rgba(190,150,75,0.2);
-  box-shadow:0 3px 14px rgba(170,120,65,0.1);
-}
-.btn-3{
-  background:linear-gradient(130deg,#ead8c8,#e3cfbe);
-  border-color:rgba(180,140,70,0.18);
-  box-shadow:0 3px 14px rgba(160,110,60,0.1);
+/* تمييز الحواف الخارجية */
+.btn-1 { border-left: 5px solid #d4af64; } /* تم نقل التمييز لليسار لتناسق أفضل */
+.btn-2 { border-left: 5px solid #a67c52; }
+.btn-3 { border-left: 5px solid #5a3010; }
+
+.btn:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(212, 175, 100, 0.5);
+  box-shadow: 0 12px 28px rgba(155, 105, 35, 0.09);
 }
 
-.btn-1 .btn-ar,.btn-2 .btn-ar,.btn-3 .btn-ar{color:#5a3010;}
-.btn-1 .btn-en,.btn-2 .btn-en,.btn-3 .btn-en{color:rgba(100,60,20,0.55);}
-.btn-1 .btn-ico,.btn-2 .btn-ico,.btn-3 .btn-ico{
-  background:rgba(160,100,40,0.1);
-  color:rgba(130,80,25,0.75);
+/* تأثير الضغط الهيدروليكي الساحر */
+.btn.pressed {
+  transform: scale(0.96) translateY(2px) !important;
+  background: linear-gradient(135deg, #5a3010 0%, #3a2008 100%) !important;
+  border-color: transparent;
+  box-shadow: 0 4px 10px rgba(58, 32, 8, 0.2), inset 0 2px 4px rgba(0,0,0,0.3);
 }
 
-/* الحالة الغامقة عند اللمس */
-.btn-1.pressed{
-  background:linear-gradient(130deg,#7a4020,#96522e);
-  border-color:transparent;
-  box-shadow:0 6px 20px rgba(122,64,32,0.38);
-  transform:scale(0.98);
-}
-.btn-2.pressed{
-  background:linear-gradient(130deg,#8c4e28,#a86038);
-  border-color:transparent;
-  box-shadow:0 6px 20px rgba(140,78,40,0.35);
-  transform:scale(0.98);
-}
-.btn-3.pressed{
-  background:linear-gradient(130deg,#9e5c32,#b87048);
-  border-color:transparent;
-  box-shadow:0 6px 20px rgba(158,92,50,0.32);
-  transform:scale(0.98);
-}
-.btn.pressed::before{opacity:0.06;}
-.btn.pressed .btn-ar{color:#fdf0dd;}
-.btn.pressed .btn-en{color:rgba(255,235,190,0.65);}
-.btn.pressed .btn-ico{background:rgba(255,255,255,0.12);color:rgba(255,235,190,0.9);}
+.btn.pressed .btn-ar { color: #fdfaf4; }
+.btn.pressed .btn-en { color: rgba(212, 175, 100, 0.7); }
+.btn.pressed .btn-ico { background: rgba(255, 255, 255, 0.15); color: #d4af64; transform: rotate(360deg); }
 
-.btn:hover:not(.pressed){transform:translateY(-2px);}
+/* محاذاة النص لليسار */
+.btn-content { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; flex: 1; z-index: 1; }
+.btn-ar { font-size: 15px; font-weight: 800; color: #3a2008; transition: color 0.3s; }
+.btn-en { font-size: 10px; font-weight: 600; color: rgba(155,105,40,0.6); letter-spacing: 0.5px; text-transform: uppercase; transition: color 0.3s; }
 
-.btn-content{display:flex;flex-direction:column;align-items:flex-end;gap:2px;flex:1;}
-.btn-ar{font-size:14px;font-weight:800;line-height:1.2;letter-spacing:0.2px;transition:color 0.28s;}
-.btn-en{font-size:10px;font-weight:500;letter-spacing:0.8px;text-transform:uppercase;transition:color 0.28s;}
-.btn-ico{
-  width:34px;height:34px;border-radius:9px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:15px;flex-shrink:0;margin-right:4px;
-  transition:background 0.28s,color 0.28s;
+/* محاذاة الأيقونة لليمين */
+.btn-ico {
+  width: 40px; height: 40px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; margin-left: 0; margin-right: 0; z-index: 1;
+  background: rgba(155, 105, 35, 0.07); color: #825019;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.btn:hover .btn-ico { transform: scale(1.1) rotate(15deg); background: rgba(155, 105, 35, 0.12); }
+
+/* السوشال ميديا */
+.soc-title {
+  font-size: 11px; font-weight: 800; color: #825019;
+  letter-spacing: 2px; text-transform: uppercase; text-align: center;
+  margin-top: 15px; opacity: 0.7;
 }
 
-/* السوشال */
-.soc-title{
-  font-size:10px;font-weight:700;
-  color:rgba(120,80,30,0.32);
-  letter-spacing:2px;text-transform:uppercase;
-  text-align:center;margin-top:4px;
+.soc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.soc {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 15px 5px; border-radius: 18px; text-decoration: none;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(212, 175, 100, 0.15);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+  transition: all 0.3s ease;
 }
-.soc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;}
-.soc{
-  display:flex;flex-direction:column;align-items:center;gap:5px;
-  padding:13px 6px;border-radius:14px;text-decoration:none;
-  background:rgba(255,255,255,0.55);
-  border:1px solid rgba(200,160,80,0.12);
-  box-shadow:0 2px 8px rgba(0,0,0,0.03),inset 0 1px 0 rgba(255,255,255,0.9);
-  transition:transform 0.2s,box-shadow 0.2s,background 0.2s;
-}
-.soc:hover{transform:translateY(-3px);}
-.soc i{font-size:20px;}
-.soc span{font-size:9px;font-weight:700;font-family:"Cairo",sans-serif;color:rgba(100,65,20,0.38);}
-.soc.wa:hover{background:rgba(235,255,242,0.9);border-color:rgba(37,211,102,0.3);box-shadow:0 6px 16px rgba(37,211,102,0.1);}
-.soc.wa i{color:#1a9e50;}
-.soc.sc:hover{background:rgba(255,255,220,0.9);border-color:rgba(200,180,0,0.3);}
-.soc.sc i{color:#b8a000;}
-.soc.ig:hover{background:rgba(255,235,242,0.9);border-color:rgba(200,50,100,0.25);box-shadow:0 6px 16px rgba(200,50,100,0.08);}
-.soc.ig i{color:#c0335a;}
+.soc i { font-size: 22px; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.soc span { font-size: 10px; font-weight: 700; color: #5a3010; }
 
-.fade-in{animation:fadeUp 0.55s cubic-bezier(0.16,1,0.3,1) both;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
-.d1{animation-delay:0.05s}.d2{animation-delay:0.12s}.d3{animation-delay:0.18s}
-.d4{animation-delay:0.24s}.d5{animation-delay:0.3s}.d6{animation-delay:0.36s}
+.soc:hover { transform: translateY(-4px); background: #ffffff; box-shadow: 0 8px 20px rgba(155, 105, 35, 0.08); }
+.soc:hover i { transform: scale(1.2); }
+.soc.wa i { color: #1a9e50; }
+.soc.sc i { color: #b8a000; }
+.soc.ig i { color: #c0335a; }
+
+/* أنيميشن الدخول */
+.fade-in { animation: fadeUp 0.65s cubic-bezier(0.23, 1, 0.32, 1) both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.d1 { animation-delay: 0.1s } .d2 { animation-delay: 0.2s } .d3 { animation-delay: 0.3s }
+.d4 { animation-delay: 0.4s } .d5 { animation-delay: 0.5s } .d6 { animation-delay: 0.6s }
 </style>
 </head>
 <body>
 
-<div class="phone-wrap">
-<div class="screen" id="screen">
+<div class="app-container" id="screen">
 
-  <div class="bg-circle bc1"></div>
-  <div class="bg-circle bc2"></div>
+  <div class="moon-halo halo-1"></div>
+  <div class="moon-halo halo-2"></div>
 
   <div class="hero" id="hero">
     <div class="logo-wrap" id="logoWrap">
-     <img src="logo_clean.png" alt="جارة القمر"> 
-    
+      <img src="logo_clean.png" alt="جارة القمر" onerror="this.style.display='none';"> 
     </div>
     <p class="name-ar" id="nameAr">مقهى جارة القمر</p>
     <p class="name-en" id="nameEn">Jarat Al Qamar</p>
@@ -270,6 +265,7 @@ body{
     </a>
 
     <p class="soc-title fade-in d5">تواصل معنا</p>
+    
     <div class="soc-grid fade-in d6">
       <a href="https://wa.me/966507462033" target="_blank" class="soc wa">
         <i class="fab fa-whatsapp"></i>
@@ -287,42 +283,32 @@ body{
 
   </div>
 </div>
-</div>
 
 <script>
-// سكرول الشعار
-const screen   = document.getElementById('screen');
-const logoWrap = document.getElementById('logoWrap');
-const logoIcon = document.getElementById('logoIcon');
-const nameAr   = document.getElementById('nameAr');
-const nameEn   = document.getElementById('nameEn');
-const heroLine = document.getElementById('heroLine');
-const hero     = document.getElementById('hero');
+// تأثير تصغير الهيدر عند السكرول
+const screenContainer = document.getElementById('screen');
+const hero = document.getElementById('hero');
 
-screen.addEventListener('scroll', () => {
-  const s = screen.scrollTop > 40;
-  logoWrap.classList.toggle('small', s);
-  if(logoIcon) logoIcon.classList.toggle('small', s);
-  nameAr.classList.toggle('small', s);
-  nameEn.classList.toggle('hidden', s);
-  heroLine.classList.toggle('hidden', s);
-  hero.style.paddingTop    = s ? '16px' : '48px';
-  hero.style.paddingBottom = s ? '12px' : '24px';
+screenContainer.addEventListener('scroll', () => {
+  if (screenContainer.scrollTop > 30) {
+    hero.classList.add('scrolled');
+  } else {
+    hero.classList.remove('scrolled');
+  }
 }, { passive: true });
 
-// تأثير اللمس على الأزرار
+// تشغيل تأثير الضغط التفاعلي السريع
 document.querySelectorAll('.btn').forEach(btn => {
-  const addPress    = () => btn.classList.add('pressed');
-  const removePress = () => btn.classList.remove('pressed');
+  const startPress = () => btn.classList.add('pressed');
+  const endPress = () => btn.classList.remove('pressed');
 
-  btn.addEventListener('touchstart',  addPress,    { passive: true });
-  btn.addEventListener('touchend',    removePress, { passive: true });
-  btn.addEventListener('touchcancel', removePress, { passive: true });
+  btn.addEventListener('touchstart', startPress, { passive: true });
+  btn.addEventListener('touchend', endPress, { passive: true });
+  btn.addEventListener('touchcancel', endPress, { passive: true });
 
-  // دعم الماوس على الديسكتوب
-  btn.addEventListener('mousedown',  addPress);
-  btn.addEventListener('mouseup',    removePress);
-  btn.addEventListener('mouseleave', removePress);
+  btn.addEventListener('mousedown', startPress);
+  btn.addEventListener('mouseup', endPress);
+  btn.addEventListener('mouseleave', endPress);
 });
 </script>
 
