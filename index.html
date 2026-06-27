@@ -6,378 +6,306 @@
 <title>مقهى جارة القمر</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
   display:flex;justify-content:center;align-items:center;
   min-height:100vh;
   font-family:"Cairo",sans-serif;
-  overflow:hidden;
-  background:linear-gradient(150deg,#fdf6ee 0%,#f5e8d8 30%,#eedfd0 60%,#e8d5c4 100%);
+  background:linear-gradient(170deg,#fdfaf4 0%,#f9f1e4 50%,#f4e8d5 100%);
 }
 
-.aurora{
-  position:fixed;border-radius:50%;
-  filter:blur(80px);
-  animation:aurMove ease-in-out infinite alternate;
-  pointer-events:none;z-index:0;
-}
-.a1{width:500px;height:500px;top:-100px;left:-100px;background:radial-gradient(circle,rgba(212,175,100,0.18),transparent 70%);animation-duration:9s;}
-.a2{width:400px;height:400px;bottom:-80px;right:-60px;background:radial-gradient(circle,rgba(180,130,90,0.14),transparent 70%);animation-duration:12s;animation-delay:-4s;}
-.a3{width:300px;height:300px;top:40%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,245,220,0.3),transparent 70%);animation-duration:7s;animation-delay:-2s;}
-@keyframes aurMove{from{transform:scale(1) translate(0,0);}to{transform:scale(1.15) translate(20px,15px);}}
-
-/* === PHONE FRAME (preview only — remove for production) === */
+/* ==============================
+   إزالة .phone-wrap و .screen
+   عند النشر الحقيقي على الجوال
+   ============================== */
 .phone-wrap{
-  position:relative;z-index:10;
   width:375px;height:812px;
   border-radius:48px;
-  box-shadow:
-    0 0 0 2px rgba(212,175,100,0.4),
-    0 0 0 4px rgba(255,255,255,0.6),
-    0 40px 100px rgba(120,80,40,0.25),
-    0 10px 30px rgba(120,80,40,0.15);
+  overflow:hidden;
+  box-shadow:0 40px 100px rgba(0,0,0,0.35),0 0 0 1px rgba(200,160,80,0.2);
 }
 
 .screen{
   width:100%;height:100%;
-  border-radius:46px;
-  overflow:hidden;
-  background:linear-gradient(175deg,#fffdf9 0%,#fdf5e8 40%,#f8edd8 100%);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:32px 22px 28px;
+  background:linear-gradient(170deg,#fdfaf4 0%,#f9f1e4 50%,#f4e8d5 100%);
+  overflow-y:auto;
+  overflow-x:hidden;
   position:relative;
 }
+.screen::-webkit-scrollbar{display:none;}
 
-.dust{
-  position:absolute;border-radius:50%;
-  background:rgba(200,155,80,0.35);
-  animation:dustFloat linear infinite;
-  pointer-events:none;
-}
-@keyframes dustFloat{
-  0%{transform:translateY(0) translateX(0) scale(1);opacity:0;}
-  10%{opacity:1;}85%{opacity:0.6;}
-  100%{transform:translateY(-820px) translateX(30px) scale(0.3);opacity:0;}
-}
+/* خلفية ناعمة */
+.bg-circle{position:absolute;border-radius:50%;pointer-events:none;z-index:0;}
+.bc1{width:300px;height:300px;top:-60px;right:-60px;background:radial-gradient(circle,rgba(212,175,100,0.08),transparent 70%);}
+.bc2{width:250px;height:250px;bottom:60px;left:-50px;background:radial-gradient(circle,rgba(180,130,70,0.06),transparent 70%);}
 
-.mandala-bg{
-  position:absolute;top:50%;left:50%;
-  transform:translate(-50%,-50%);
-  width:600px;height:600px;
-  opacity:0.04;
-  animation:rotateSlow 60s linear infinite;
-  pointer-events:none;
-}
-@keyframes rotateSlow{from{transform:translate(-50%,-50%) rotate(0)}to{transform:translate(-50%,-50%) rotate(360deg)}}
-
-.shimmer-top{
-  position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent 0%,rgba(212,175,100,0.0) 10%,rgba(212,175,100,0.9) 50%,rgba(212,175,100,0.0) 90%,transparent 100%);
-  border-radius:48px 48px 0 0;
+/* الهيرو */
+.hero{
+  display:flex;flex-direction:column;align-items:center;
+  padding:52px 22px 28px;
+  position:sticky;top:0;z-index:5;
+  background:linear-gradient(170deg,rgba(253,250,244,0.97) 0%,rgba(249,241,228,0.97) 100%);
+  backdrop-filter:blur(10px);
+  transition:padding 0.35s ease;
 }
 
-/* === CARD === */
-.card{
-  position:relative;z-index:3;
-  width:100%;
-  background:rgba(255,255,255,0.55);
-  border:1px solid rgba(212,175,100,0.35);
-  border-radius:28px;
-  padding:30px 20px 24px;
-  text-align:center;
-  backdrop-filter:blur(8px);
-  box-shadow:
-    0 2px 0 rgba(255,255,255,0.9) inset,
-    0 -1px 0 rgba(212,175,100,0.2) inset,
-    0 20px 50px rgba(150,100,50,0.08);
+/* الشعار */
+.logo-wrap{
+  position:relative;
+  width:90px;height:90px;
+  margin-bottom:14px;
+  transition:width 0.35s ease,height 0.35s ease,margin-bottom 0.35s ease;
+  flex-shrink:0;
 }
-.card::before{
-  content:'';position:absolute;inset:1px;border-radius:27px;
-  background:linear-gradient(170deg,rgba(255,255,255,0.7) 0%,rgba(255,255,255,0) 60%);
-  pointer-events:none;
-}
-.card::after{
-  content:'';position:absolute;
-  top:0;left:50%;transform:translateX(-50%);
-  width:55%;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(212,175,100,0.85),transparent);
-}
+.logo-wrap.small{width:54px;height:54px;margin-bottom:8px;}
 
-/* === LOGO === */
-.logo-area{
-  position:relative;width:100px;height:100px;margin:0 auto 16px;
-}
-.logo-halo{
-  position:absolute;inset:-8px;border-radius:50%;
-  background:radial-gradient(circle,rgba(212,175,100,0.12),transparent 70%);
-  animation:halopulse 3s ease-in-out infinite;
-}
-@keyframes halopulse{
-  0%,100%{transform:scale(1);opacity:0.6;}
-  50%{transform:scale(1.12);opacity:1;}
-}
-.logo-outer-ring{
+.logo-ring{
   position:absolute;inset:0;border-radius:50%;
-  border:1px solid rgba(212,175,100,0.4);
-  animation:spin1 25s linear infinite;
-}
-.logo-outer-ring::before,.logo-outer-ring::after{
-  content:'';position:absolute;
-  width:6px;height:6px;border-radius:50%;
-  background:rgba(212,175,100,0.8);
-  box-shadow:0 0 6px rgba(212,175,100,0.6);
-}
-.logo-outer-ring::before{top:-3px;left:50%;transform:translateX(-50%);}
-.logo-outer-ring::after{bottom:-3px;left:50%;transform:translateX(-50%);}
-.logo-inner-ring{
-  position:absolute;inset:10px;border-radius:50%;
-  border:1px dashed rgba(212,175,100,0.3);
-  animation:spin1 15s linear infinite reverse;
-}
-@keyframes spin1{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-.logo-circle{
-  position:absolute;inset:16px;border-radius:50%;
-  background:linear-gradient(135deg,rgba(255,250,235,0.95),rgba(255,240,210,0.9));
-  border:1px solid rgba(212,175,100,0.5);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:
-    0 0 20px rgba(212,175,100,0.2),
-    0 4px 12px rgba(150,100,40,0.1),
-    inset 0 1px 0 rgba(255,255,255,0.8);
-  font-size:28px;
-  color:rgba(160,110,40,0.85);
+  border:1px solid rgba(200,160,80,0.22);
 }
 
-/* === TYPOGRAPHY === */
-.name-ar{
-  font-size:24px;font-weight:900;
-  color:#3d2208;
-  letter-spacing:0.5px;line-height:1.1;
-  text-shadow:0 1px 0 rgba(255,255,255,0.8);
-  margin-bottom:3px;
+.logo-circle{
+  position:absolute;inset:10px;border-radius:50%;
+  background:linear-gradient(145deg,#fffcf5,#fff5e0);
+  border:1px solid rgba(200,160,80,0.3);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(160,110,30,0.1),inset 0 1px 0 rgba(255,255,255,0.9);
+  font-size:26px;color:rgba(155,105,35,0.85);
+  overflow:hidden;
+  transition:inset 0.35s ease,font-size 0.35s ease;
 }
+.logo-wrap.small .logo-circle{inset:6px;font-size:16px;}
+
+.logo-circle img{
+  width:38px;height:38px;object-fit:contain;
+  transition:width 0.35s,height 0.35s;
+}
+.logo-wrap.small .logo-circle img{width:22px;height:22px;}
+
+.name-ar{
+  font-size:22px;font-weight:800;color:#3a2008;
+  margin-bottom:2px;
+  transition:font-size 0.35s ease;
+}
+.name-ar.small{font-size:16px;}
+
 .name-en{
   font-size:10px;font-weight:600;
-  color:rgba(160,110,50,0.7);
-  letter-spacing:4px;text-transform:uppercase;
-  margin-bottom:20px;
+  color:rgba(155,105,40,0.6);
+  letter-spacing:3.5px;text-transform:uppercase;
+  transition:opacity 0.25s ease,font-size 0.25s ease,margin 0.25s ease;
+}
+.name-en.hidden{opacity:0;font-size:0;margin:0;}
+
+.hero-line{
+  width:100%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(200,160,80,0.2),transparent);
+  margin-top:18px;
+  transition:opacity 0.3s;
+}
+.hero-line.hidden{opacity:0;margin-top:0;}
+
+/* المحتوى */
+.content{
+  position:relative;z-index:2;
+  padding:22px 20px 36px;
+  display:flex;flex-direction:column;
+  gap:10px;
 }
 
-/* Ornamental divider */
-.ornament{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
-.orn-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,100,0.5));}
-.orn-line.r{background:linear-gradient(90deg,rgba(212,175,100,0.5),transparent);}
-.orn-center{display:flex;align-items:center;gap:5px;color:rgba(180,130,55,0.7);font-size:9px;}
-.orn-diamond{width:5px;height:5px;background:rgba(212,175,100,0.7);transform:rotate(45deg);border-radius:1px;}
+/* فاصل الماسة */
+.sep{display:flex;align-items:center;gap:10px;margin-bottom:2px;}
+.sep-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,160,80,0.28));}
+.sep-line.r{background:linear-gradient(90deg,rgba(200,160,80,0.28),transparent);}
+.sep-diamond{
+  width:6px;height:6px;
+  background:rgba(200,160,80,0.45);
+  transform:rotate(45deg);border-radius:1px;flex-shrink:0;
+}
 
-/* === BUTTONS === */
-.btns{display:flex;flex-direction:column;gap:11px;margin-bottom:16px;}
-
+/* الأزرار */
 .btn{
   display:flex;align-items:center;justify-content:space-between;
-  padding:14px 16px;border-radius:16px;
-  text-decoration:none;font-family:"Cairo",sans-serif;
-  font-weight:700;border:none;outline:none;cursor:pointer;
-  transition:transform 0.25s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.25s;
+  padding:13px 16px;border-radius:15px;
+  text-decoration:none;font-family:"Cairo",sans-serif;font-weight:700;
+  border:1px solid transparent;
+  transition:transform 0.2s ease,box-shadow 0.2s ease,background 0.2s;
   position:relative;overflow:hidden;
 }
 .btn::before{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(255,255,255,0.35) 0%,rgba(255,255,255,0) 60%);
-  border-radius:16px;pointer-events:none;
+  background:linear-gradient(135deg,rgba(255,255,255,0.25),transparent 60%);
+  pointer-events:none;
 }
-.btn:hover{transform:translateY(-3px) scale(1.01);}
+.btn:hover{transform:translateY(-2px);}
 .btn:active{transform:scale(0.98);}
 
-.btn-p{
-  background:linear-gradient(135deg,#6b3a1f 0%,#9a5e35 50%,#7a4525 100%);
-  box-shadow:0 6px 24px rgba(107,58,31,0.35),0 2px 6px rgba(107,58,31,0.2),inset 0 1px 0 rgba(255,255,255,0.15);
+.btn-main{
+  background:linear-gradient(135deg,#6b3a1f,#8c5230);
   color:#fdf0dd;
+  box-shadow:0 4px 18px rgba(107,58,31,0.25);
 }
-.btn-p:hover{box-shadow:0 10px 32px rgba(107,58,31,0.45),0 4px 10px rgba(107,58,31,0.3);}
+.btn-main:hover{box-shadow:0 8px 24px rgba(107,58,31,0.35);}
 
-.btn-s{
-  background:rgba(255,255,255,0.6);
-  border:1.5px solid rgba(212,175,100,0.55) !important;
-  box-shadow:0 4px 16px rgba(212,175,100,0.15),inset 0 1px 0 rgba(255,255,255,0.9);
+.btn-out{
+  background:rgba(255,255,255,0.65);
+  border-color:rgba(200,160,80,0.35);
   color:#6b3a1f;
+  box-shadow:0 2px 12px rgba(200,160,80,0.08);
 }
-.btn-s:hover{background:rgba(255,255,255,0.8);box-shadow:0 8px 24px rgba(212,175,100,0.25);}
+.btn-out:hover{background:rgba(255,255,255,0.9);}
 
-.btn-g{
+.btn-ghost{
   background:rgba(255,255,255,0.35);
-  border:1px solid rgba(150,110,60,0.2) !important;
-  box-shadow:0 2px 10px rgba(0,0,0,0.04),inset 0 1px 0 rgba(255,255,255,0.7);
-  color:rgba(100,65,25,0.75);
+  border-color:rgba(180,140,70,0.15);
+  color:rgba(90,55,15,0.65);
 }
-.btn-g:hover{background:rgba(255,255,255,0.55);}
+.btn-ghost:hover{background:rgba(255,255,255,0.55);}
 
 .btn-txt{display:flex;flex-direction:column;align-items:flex-end;gap:1px;}
-.btn-ar{font-size:14px;font-weight:800;line-height:1.2;}
-.btn-en{font-size:10px;font-weight:400;opacity:0.6;letter-spacing:0.3px;}
+.btn-ar{font-size:14px;font-weight:700;}
+.btn-en{font-size:10px;opacity:0.55;font-weight:400;letter-spacing:0.3px;}
 
 .btn-ico{
-  width:36px;height:36px;border-radius:10px;
+  width:34px;height:34px;border-radius:9px;
   display:flex;align-items:center;justify-content:center;
   font-size:15px;flex-shrink:0;
 }
-.btn-p .btn-ico{background:rgba(255,255,255,0.12);color:rgba(255,240,210,0.9);}
-.btn-s .btn-ico{background:rgba(212,175,100,0.15);color:#9a6520;}
-.btn-g .btn-ico{background:rgba(150,110,60,0.1);color:rgba(120,80,30,0.7);}
+.btn-main .btn-ico{background:rgba(255,255,255,0.12);color:rgba(255,235,190,0.9);}
+.btn-out .btn-ico{background:rgba(200,160,80,0.12);color:#9a6520;}
+.btn-ghost .btn-ico{background:rgba(160,110,40,0.08);color:rgba(120,75,20,0.6);}
 
-/* === SOCIAL === */
-.soc-lbl{
+/* السوشال */
+.soc-title{
   font-size:10px;font-weight:700;
-  color:rgba(120,80,35,0.45);
-  letter-spacing:2.5px;text-transform:uppercase;
-  margin-bottom:10px;
+  color:rgba(120,80,30,0.35);
+  letter-spacing:2px;text-transform:uppercase;
+  text-align:center;margin-top:4px;
 }
-.soc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.soc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;}
 
 .soc{
-  display:flex;flex-direction:column;align-items:center;gap:6px;
-  padding:14px 6px;border-radius:16px;text-decoration:none;
-  background:rgba(255,255,255,0.5);
-  border:1px solid rgba(200,165,90,0.2);
-  box-shadow:0 2px 8px rgba(0,0,0,0.04),inset 0 1px 0 rgba(255,255,255,0.8);
-  transition:transform 0.25s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.25s,background 0.2s;
-  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;gap:5px;
+  padding:13px 6px;border-radius:14px;text-decoration:none;
+  background:rgba(255,255,255,0.55);
+  border:1px solid rgba(200,160,80,0.12);
+  box-shadow:0 2px 8px rgba(0,0,0,0.03),inset 0 1px 0 rgba(255,255,255,0.9);
+  transition:transform 0.2s ease,box-shadow 0.2s ease,background 0.2s;
 }
-.soc::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(255,255,255,0.4),transparent 60%);
-  pointer-events:none;
-}
-.soc:hover{transform:translateY(-4px) scale(1.04);}
-.soc.wa:hover{background:rgba(220,255,235,0.8);border-color:rgba(37,211,102,0.35);box-shadow:0 8px 20px rgba(37,211,102,0.15);}
-.soc.wa i{color:#1a9e50;font-size:22px;}
-.soc.sc:hover{background:rgba(255,255,210,0.85);border-color:rgba(200,185,0,0.35);box-shadow:0 8px 20px rgba(220,200,0,0.15);}
-.soc.sc i{color:#b8a500;font-size:22px;}
-.soc.ig:hover{background:rgba(255,230,240,0.8);border-color:rgba(200,60,110,0.3);box-shadow:0 8px 20px rgba(200,60,110,0.12);}
-.soc.ig i{color:#c0335a;font-size:22px;}
-.soc span{font-size:9px;font-weight:700;font-family:"Cairo",sans-serif;color:rgba(100,65,25,0.5);letter-spacing:0.3px;position:relative;z-index:1;}
-.soc i{position:relative;z-index:1;}
+.soc:hover{transform:translateY(-3px);}
+.soc i{font-size:20px;}
+.soc span{font-size:9px;font-weight:700;font-family:"Cairo",sans-serif;color:rgba(100,65,20,0.4);}
 
-/* === PRODUCTION MODE (uncomment to remove phone frame) ===
-Remove .phone-wrap and .screen styles and use this instead:
-body { background: linear-gradient(150deg,#fdf6ee,#f5e8d8,#eedfd0,#e8d5c4); }
-.card { max-width: 390px; width: calc(100% - 40px); }
-*/
+.soc.wa:hover{background:rgba(235,255,242,0.9);border-color:rgba(37,211,102,0.3);box-shadow:0 6px 16px rgba(37,211,102,0.1);}
+.soc.wa i{color:#1a9e50;}
+.soc.sc:hover{background:rgba(255,255,220,0.9);border-color:rgba(200,180,0,0.3);box-shadow:0 6px 16px rgba(200,180,0,0.08);}
+.soc.sc i{color:#b8a000;}
+.soc.ig:hover{background:rgba(255,235,242,0.9);border-color:rgba(200,50,100,0.25);box-shadow:0 6px 16px rgba(200,50,100,0.08);}
+.soc.ig i{color:#c0335a;}
+
+/* ظهور تدريجي */
+.fade-in{animation:fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.d1{animation-delay:0.05s}.d2{animation-delay:0.12s}.d3{animation-delay:0.19s}
+.d4{animation-delay:0.26s}.d5{animation-delay:0.33s}.d6{animation-delay:0.4s}
 </style>
 </head>
 <body>
 
-<div class="aurora a1"></div>
-<div class="aurora a2"></div>
-<div class="aurora a3"></div>
-
+<!-- 
+  للنشر على الجوال: احذف div.phone-wrap و div.screen
+  واستبدلهم بـ div واحد بـ class="content" مباشرة
+-->
 <div class="phone-wrap">
-  <div class="screen" id="screen">
+<div class="screen" id="screen">
 
-    <div class="shimmer-top"></div>
+  <div class="bg-circle bc1"></div>
+  <div class="bg-circle bc2"></div>
 
-    <svg class="mandala-bg" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-      <g transform="translate(300,300)" fill="none" stroke="#8a5a20" stroke-width="0.8">
-        <circle r="50"/><circle r="100"/><circle r="150"/><circle r="200"/><circle r="250"/>
-        <g id="sp">
-          <line x1="0" y1="0" x2="0" y2="-260"/>
-          <line x1="0" y1="0" x2="18" y2="-255"/>
-          <line x1="0" y1="0" x2="-18" y2="-255"/>
-        </g>
-        <use href="#sp" transform="rotate(30)"/><use href="#sp" transform="rotate(60)"/>
-        <use href="#sp" transform="rotate(90)"/><use href="#sp" transform="rotate(120)"/>
-        <use href="#sp" transform="rotate(150)"/><use href="#sp" transform="rotate(180)"/>
-        <use href="#sp" transform="rotate(210)"/><use href="#sp" transform="rotate(240)"/>
-        <use href="#sp" transform="rotate(270)"/><use href="#sp" transform="rotate(300)"/>
-        <use href="#sp" transform="rotate(330)"/>
-        <g id="petal"><ellipse cx="0" cy="-130" rx="18" ry="40"/></g>
-        <use href="#petal" transform="rotate(45)"/><use href="#petal" transform="rotate(90)"/>
-        <use href="#petal" transform="rotate(135)"/><use href="#petal" transform="rotate(180)"/>
-        <use href="#petal" transform="rotate(225)"/><use href="#petal" transform="rotate(270)"/>
-        <use href="#petal" transform="rotate(315)"/>
-      </g>
-    </svg>
-
-    <div class="card">
-
-      <div class="logo-area">
-        <div class="logo-halo"></div>
-        <div class="logo-outer-ring"></div>
-        <div class="logo-inner-ring"></div>
-        <div class="logo-circle">
-         
-          <img src="logo_clean.png" style="width:36px;height:36px;object-fit:contain;filter:sepia(1) saturate(2) hue-rotate(5deg) brightness(0.7);">
-        </div>
+  <div class="hero" id="hero">
+    <div class="logo-wrap" id="logoWrap">
+      <div class="logo-ring"></div>
+      <div class="logo-circle">
+        <img src="logo_clean.png">
+        
       </div>
-
-      <p class="name-ar">مقهى جارة القمر</p>
-      <p class="name-en">Jarat Al Qamar</p>
-
-      <div class="ornament">
-        <div class="orn-line"></div>
-        <div class="orn-center">
-          <div class="orn-diamond"></div>
-          <i class="fas fa-star" style="font-size:8px;"></i>
-          <div class="orn-diamond"></div>
-        </div>
-        <div class="orn-line r"></div>
-      </div>
-
-      <div class="btns">
-        <a href="menu.html" class="btn btn-p">
-          <span class="btn-txt">
-            <span class="btn-ar">منيو المشروبات</span>
-            <span class="btn-en">Drinks Menu</span>
-          </span>
-          <span class="btn-ico"><i class="fas fa-mug-hot"></i></span>
-        </a>
-        <a href="dessert.html" class="btn btn-s">
-          <span class="btn-txt">
-            <span class="btn-ar">منيو الحلويات</span>
-            <span class="btn-en">Dessert Menu</span>
-          </span>
-          <span class="btn-ico"><i class="fas fa-cookie-bite"></i></span>
-        </a>
-        <a href="https://maps.app.goo.gl/EdWLHkH9VfmzNYXz9?g_st=ic" target="_blank" class="btn btn-g">
-          <span class="btn-txt">
-            <span class="btn-ar">تجدونا هنا</span>
-            <span class="btn-en">Find us on Maps</span>
-          </span>
-          <span class="btn-ico"><i class="fas fa-location-dot"></i></span>
-        </a>
-      </div>
-
-      <p class="soc-lbl">تواصل معنا</p>
-      <div class="soc-grid">
-        <a href="https://wa.me/966507462033" target="_blank" class="soc wa">
-          <i class="fab fa-whatsapp"></i>
-          <span>واتساب</span>
-        </a>
-        <a href="https://snapchat.com/t/sh2qHyb5" target="_blank" class="soc sc">
-          <i class="fab fa-snapchat"></i>
-          <span>سناب</span>
-        </a>
-        <a href="https://www.instagram.com/jaratalqamar.sa" target="_blank" class="soc ig">
-          <i class="fab fa-instagram"></i>
-          <span>إنستقرام</span>
-        </a>
-      </div>
-
     </div>
+    <p class="name-ar" id="nameAr">مقهى جارة القمر</p>
+    <p class="name-en" id="nameEn">Jarat Al Qamar</p>
+    <div class="hero-line" id="heroLine"></div>
   </div>
+
+  <div class="content">
+
+    <div class="sep fade-in d1">
+      <div class="sep-line"></div>
+      <div class="sep-diamond"></div>
+      <div class="sep-line r"></div>
+    </div>
+
+    <a href="menu.html" class="btn btn-main fade-in d2">
+      <span class="btn-txt">
+        <span class="btn-ar">منيو المشروبات</span>
+        <span class="btn-en">Drinks Menu</span>
+      </span>
+      <span class="btn-ico"><i class="fas fa-mug-hot"></i></span>
+    </a>
+
+    <a href="dessert.html" class="btn btn-out fade-in d3">
+      <span class="btn-txt">
+        <span class="btn-ar">منيو الحلويات</span>
+        <span class="btn-en">Dessert Menu</span>
+      </span>
+      <span class="btn-ico"><i class="fas fa-cookie-bite"></i></span>
+    </a>
+
+    <a href="https://maps.app.goo.gl/EdWLHkH9VfmzNYXz9?g_st=ic" target="_blank" class="btn btn-ghost fade-in d4">
+      <span class="btn-txt">
+        <span class="btn-ar">تجدونا هنا</span>
+        <span class="btn-en">Find us on Maps</span>
+      </span>
+      <span class="btn-ico"><i class="fas fa-location-dot"></i></span>
+    </a>
+
+    <p class="soc-title fade-in d5">تواصل معنا</p>
+    <div class="soc-grid fade-in d6">
+      <a href="https://wa.me/966507462033" target="_blank" class="soc wa">
+        <i class="fab fa-whatsapp"></i>
+        <span>واتساب</span>
+      </a>
+      <a href="https://snapchat.com/t/sh2qHyb5" target="_blank" class="soc sc">
+        <i class="fab fa-snapchat"></i>
+        <span>سناب</span>
+      </a>
+      <a href="https://www.instagram.com/jaratalqamar.sa" target="_blank" class="soc ig">
+        <i class="fab fa-instagram"></i>
+        <span>إنستقرام</span>
+      </a>
+    </div>
+
+  </div>
+</div>
 </div>
 
 <script>
-const screen = document.getElementById('screen');
-for(let i=0;i<18;i++){
-  const d=document.createElement('div');
-  d.className='dust';
-  const sz=2+Math.random()*4;
-  d.style.cssText=`width:${sz}px;height:${sz}px;left:${10+Math.random()*80}%;bottom:-10px;animation-duration:${10+Math.random()*14}s;animation-delay:${Math.random()*12}s;opacity:0;`;
-  screen.appendChild(d);
-}
+const screen   = document.getElementById('screen');
+const logoWrap = document.getElementById('logoWrap');
+const nameAr   = document.getElementById('nameAr');
+const nameEn   = document.getElementById('nameEn');
+const heroLine = document.getElementById('heroLine');
+const hero     = document.getElementById('hero');
+
+screen.addEventListener('scroll', () => {
+  const scrolled = screen.scrollTop > 40;
+  logoWrap.classList.toggle('small', scrolled);
+  nameAr.classList.toggle('small', scrolled);
+  nameEn.classList.toggle('hidden', scrolled);
+  heroLine.classList.toggle('hidden', scrolled);
+  hero.style.paddingTop    = scrolled ? '18px' : '52px';
+  hero.style.paddingBottom = scrolled ? '14px' : '28px';
+});
 </script>
 
 </body>
