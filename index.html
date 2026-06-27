@@ -75,21 +75,45 @@ body {
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
+/* ☕ إطار الشعار الاحترافي على شكل حبة بن */
 .logo-wrap {
   width: 110px; height: 110px;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
   display: flex; align-items: center; justify-content: center;
-  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-  background: linear-gradient(135deg, #ffffff, #fdfaf4);
-  box-shadow: 0 12px 24px rgba(155, 105, 35, 0.1);
+  /* زوايا هندسية متطابقة لمحاكاة انحناءات حبة البن */
+  border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%; 
+  transform: rotate(15deg); /* ميلان خفيف وجذاب مثل حبة القهوة */
+  background: linear-gradient(135deg, #ffffff, #fbf6ed);
+  border: 2px solid rgba(130, 80, 25, 0.25);
+  box-shadow: 0 10px 25px rgba(90, 48, 16, 0.12);
+  position: relative;
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-.logo-wrap img { width: 75%; height: 75%; object-fit: contain; transition: all 0.4s; }
 
-/* تأثير السكرول */
+/* خط الانحناء الداخلي لحبة البن المميز */
+.logo-wrap::after {
+  content: '';
+  position: absolute;
+  top: 10%; bottom: 10%; left: 49%; width: 2px;
+  background: linear-gradient(to bottom, transparent, rgba(130, 80, 25, 0.15), transparent);
+  border-radius: 50%;
+  transform: rotate(-10deg);
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.logo-wrap img { 
+  width: 65%; height: 65%; 
+  object-fit: contain; 
+  transform: rotate(-15deg); /* إلغاء الدوران للصورة الداخلية ليظل الشعار مستقيماً ومتناسقاً */
+  transition: all 0.4s; 
+}
+
+/* تأثير السكرول الذكي */
 .hero.scrolled { padding: 12px 24px; box-shadow: 0 10px 30px rgba(90, 48, 16, 0.05); }
-.hero.scrolled .logo-wrap { width: 50px; height: 50px; margin-bottom: 0; border-radius: 50%; }
-.hero.scrolled .logo-wrap img { width: 65%; height: 65%; }
+.hero.scrolled .logo-wrap { width: 50px; height: 50px; margin-bottom: 0; border-radius: 50%; transform: rotate(0deg); border-color: rgba(212, 175, 100, 0.2); }
+.hero.scrolled .logo-wrap::after { opacity: 0; } /* إخفاء خط حبة البن عند التصغير للحفاظ على وضوح الشعار */
+.hero.scrolled .logo-wrap img { width: 65%; height: 65%; transform: rotate(0deg); }
 .hero.scrolled .name-ar { font-size: 18px; margin-top: 4px; }
 .hero.scrolled .name-en, .hero.scrolled .hero-line { height: 0; opacity: 0; margin: 0; overflow: hidden; }
 
@@ -112,11 +136,11 @@ body {
 
 @keyframes spinMoon { 100% { transform: rotate(405deg); } }
 
-/* الأزرار المحدثة للتوجيه الفضائي (الكلام يسار والرمز يمين) */
+/* الأزرار (الكلام يسار والرمز يمين) */
 .btn {
   display: flex; 
   align-items: center; 
-  flex-direction: row-reverse; /* لعكس ترتيب العناصر: الأيقونة يمين والكلام يسار */
+  flex-direction: row-reverse; 
   justify-content: space-between;
   padding: 0 20px; height: 66px;
   border-radius: 20px; text-decoration: none;
@@ -146,7 +170,7 @@ body {
 }
 
 /* تمييز الحواف الخارجية */
-.btn-1 { border-left: 5px solid #d4af64; } /* تم نقل التمييز لليسار لتناسق أفضل */
+.btn-1 { border-left: 5px solid #d4af64; }
 .btn-2 { border-left: 5px solid #a67c52; }
 .btn-3 { border-left: 5px solid #5a3010; }
 
@@ -157,7 +181,7 @@ body {
   box-shadow: 0 12px 28px rgba(155, 105, 35, 0.09);
 }
 
-/* تأثير الضغط الهيدروليكي الساحر */
+/* تأثير الضغط الهيدروليكي */
 .btn.pressed {
   transform: scale(0.96) translateY(2px) !important;
   background: linear-gradient(135deg, #5a3010 0%, #3a2008 100%) !important;
@@ -220,9 +244,11 @@ body {
 
 <div class="app-container" id="screen">
 
+  <!-- هالات القمر في الخلفية -->
   <div class="moon-halo halo-1"></div>
   <div class="moon-halo halo-2"></div>
 
+  <!-- الهيدر الاستيكي المتفاعل -->
   <div class="hero" id="hero">
     <div class="logo-wrap" id="logoWrap">
       <img src="logo_clean.png" alt="جارة القمر" onerror="this.style.display='none';"> 
@@ -232,6 +258,7 @@ body {
     <div class="hero-line" id="heroLine"></div>
   </div>
 
+  <!-- المحتوى والأزرار -->
   <div class="content">
 
     <div class="sep fade-in d1">
@@ -240,6 +267,7 @@ body {
       <div class="sep-line r"></div>
     </div>
 
+    <!-- زر منيو المشروبات -->
     <a href="menu.html" class="btn btn-1 fade-in d2">
       <span class="btn-ico"><i class="fas fa-mug-hot"></i></span>
       <span class="btn-content">
@@ -248,6 +276,7 @@ body {
       </span>
     </a>
 
+    <!-- زر منيو الحلويات -->
     <a href="dessert.html" class="btn btn-2 fade-in d3">
       <span class="btn-ico"><i class="fas fa-cookie-bite"></i></span>
       <span class="btn-content">
@@ -256,6 +285,7 @@ body {
       </span>
     </a>
 
+    <!-- زر الخريطة -->
     <a href="https://maps.app.goo.gl/EdWLHkH9VfmzNYXz9?g_st=ic" target="_blank" class="btn btn-3 fade-in d4">
       <span class="btn-ico"><i class="fas fa-location-dot"></i></span>
       <span class="btn-content">
