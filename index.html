@@ -2,324 +2,172 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>مقهى جارة القمر</title>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600;700&display=swap');
 
-/* منع الحركة والاهتزاز تماماً على الجوال */
-html, body {
-  margin: 0; padding: 0; box-sizing: border-box;
-  font-family: "Cairo", sans-serif;
-  background: #fdfaf4;
-  overflow-x: hidden;
-  width: 100%;
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-font-smoothing: antialiased;
+:root{
+--primary:#6b3e2e;
+--secondary:#8a5a44;
+--accent:#d9b59b;
 }
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
+body{
+margin:0;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:"Cairo", sans-serif;
+background:linear-gradient(135deg,#f8f1ea 0%,#efe3d8 50%,#e6d3c4 100%);
+padding:15px;
 }
 
-/* الحاوية الرئيسية المتجاوبة والمستقرة تماماً */
-.app-container {
-  width: 100%;
-  max-width: 412px;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #fdfaf4 0%, #f7ebd9 50%, #eddcc4 100%);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 30px 70px rgba(90, 48, 16, 0.15);
+.container{
+backdrop-filter:blur(12px);
+background:rgba(255,255,255,0.45);
+border-radius:25px;
+padding:25px 15px;
+text-align:center;
+width:100%;
+max-width:380px;
+box-shadow:0 15px 30px rgba(0,0,0,0.1);
 }
 
-/* تعديل للهواتف لضمان عدم وجود اهتزاز أو هوامش */
-@media (max-width: 480px) {
-  .app-container {
-    box-shadow: none;
-    max-width: 100%;
-  }
+.logo{
+width:140px;
+margin:0 auto 15px;
 }
 
-/* تأثير هالة القمر بالخلفية - تم ضبطها لمنع تمدد الشاشة */
-.moon-halo {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-  filter: blur(60px);
-}
-.halo-1 { width: 250px; height: 250px; top: -50px; left: -50px; background: rgba(212,175,100,0.15); }
-.halo-2 { width: 250px; height: 250px; bottom: 10%; right: -50px; background: rgba(155,105,35,0.08); }
-
-/* الهيدر الزجاجي الأسطوري */
-.hero {
-  display: flex; flex-direction: column; align-items: center;
-  padding: 35px 24px 20px;
-  position: sticky; top: 0; z-index: 10;
-  background: rgba(253, 250, 244, 0.85);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border-bottom: 1px solid rgba(212, 175, 100, 0.15);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  width: 100%;
+.logo img{
+width:100%;
+filter: brightness(0) saturate(100%) invert(18%) sepia(28%) saturate(800%) hue-rotate(350deg);
 }
 
-/* ☕ تكبير إطار الشعار على شكل حبة بن */
-.logo-wrap {
-  width: 140px; height: 140px; /* تم تكبير الحجم من 110px إلى 140px */
-  margin-bottom: 15px;
-  display: flex; align-items: center; justify-content: center;
-  border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%; 
-  transform: rotate(15deg);
-  background: linear-gradient(135deg, #ffffff, #fbf6ed);
-  border: 2px solid rgba(130, 80, 25, 0.25);
-  box-shadow: 0 12px 30px rgba(90, 48, 16, 0.15);
-  position: relative;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+h1{
+margin:5px 0;
+color:var(--primary);
+font-size:24px;
 }
 
-.logo-wrap::after {
-  content: ''; position: absolute;
-  top: 10%; bottom: 10%; left: 49%; width: 2px;
-  background: linear-gradient(to bottom, transparent, rgba(130, 80, 25, 0.15), transparent);
-  border-radius: 50%; transform: rotate(-10deg);
+.menu-buttons{
+display:flex;
+flex-direction:column;
+gap:12px;
 }
 
-.logo-wrap img { 
-  width: 70%; height: 70%; 
-  object-fit: contain; 
-  transform: rotate(-15deg);
-  transition: all 0.3s; 
+.btn{
+padding:14px;
+border-radius:16px;
+text-decoration:none;
+font-weight:bold;
+transition:0.3s;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:15px;
+background:linear-gradient(135deg,#6b3e2e,#8a5a44);
+color:#fff;
 }
 
-/* تأثير السكرول الذكي والسلس جداً */
-.scrolled .hero { padding: 12px 24px; box-shadow: 0 10px 30px rgba(90, 48, 16, 0.05); }
-.scrolled .logo-wrap { width: 55px; height: 55px; margin-bottom: 0; border-radius: 50%; transform: rotate(0deg); border-color: rgba(212, 175, 100, 0.2); box-shadow: none; }
-.scrolled .logo-wrap::after { opacity: 0; }
-.scrolled .logo-wrap img { width: 65%; height: 65%; transform: rotate(0deg); }
-.scrolled .name-ar { font-size: 18px; margin-top: 4px; }
-.scrolled .name-en, .scrolled .hero-line { height: 0; opacity: 0; margin: 0; overflow: hidden; }
-
-.name-ar { font-size: 24px; font-weight: 800; color: #3a2008; transition: all 0.3s; }
-.name-en { font-size: 10px; font-weight: 600; color: rgba(155,105,40,0.6); letter-spacing: 3.5px; text-transform: uppercase; margin-top: 2px; transition: all 0.2s; }
-
-.hero-line {
-  width: 60px; height: 2px;
-  background: linear-gradient(90deg, transparent, #c8a050, transparent);
-  margin-top: 12px; border-radius: 2px; transition: all 0.2s;
+.btn-alt{
+background:linear-gradient(135deg,#8a5a44,#d9b59b);
 }
 
-/* المحتوى */
-.content { position: relative; z-index: 2; padding: 20px 20px 40px; display: flex; flex-direction: column; gap: 16px; width: 100%; }
-
-.sep { display: flex; align-items: center; gap: 12px; margin: 5px 0; }
-.sep-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(200,160,80,0.3)); }
-.sep-line.r { background: linear-gradient(90deg, rgba(200,160,80,0.3), transparent); }
-.sep-diamond { width: 6px; height: 6px; background: #c8a050; transform: rotate(45deg); border-radius: 1px; }
-
-/* الأزرار الفاخرة (الكلام يسار والرمز يمين) */
-.btn {
-  display: flex; 
-  align-items: center; 
-  flex-direction: row-reverse; 
-  justify-content: space-between;
-  padding: 0 20px; height: 66px;
-  border-radius: 20px; text-decoration: none;
-  position: relative; overflow: hidden;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.75) 0%, rgba(254, 249, 241, 0.55) 100%);
-  border: 1.5px solid rgba(212, 175, 100, 0.25);
-  box-shadow: 0 8px 20px rgba(155, 105, 35, 0.04), inset 0 1px 2px rgba(255,255,255,0.8);
-  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+.btn:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
 }
 
-/* تأثير اللمعة التلقائي */
-.btn::before {
-  content: ''; position: absolute; top: 0; right: -100%; width: 50%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
-  transform: skewX(-25deg);
-  animation: shineEffect 4s infinite ease-in-out;
-}
-.btn-1::before { animation-delay: 0s; }
-.btn-2::before { animation-delay: 1.3s; }
-.btn-3::before { animation-delay: 2.6s; }
-
-@keyframes shineEffect {
-  0% { right: -100%; }
-  30% { right: 150%; }
-  100% { right: 150%; }
+/* السوشال */
+.social-grid{
+display:grid;
+grid-template-columns:repeat(3, 1fr);
+gap:10px;
+margin-top:10px;
 }
 
-.btn-1 { border-left: 5px solid #d4af64; }
-.btn-2 { border-left: 5px solid #a67c52; }
-.btn-3 { border-left: 5px solid #5a3010; }
-
-.btn:hover {
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.95);
-  border-color: rgba(212, 175, 100, 0.4);
-  box-shadow: 0 10px 24px rgba(155, 105, 35, 0.08);
+.social-btn{
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:16px;
+padding:18px 0;
+background:linear-gradient(135deg,#6b3e2e,#8a5a44);
+color:#fff;
+font-size:22px;
+transition:0.3s;
+text-decoration:none;
 }
 
-/* تأثير اللمس الثابت والمستقر */
-.btn.pressed {
-  transform: scale(0.97) !important;
-  background: linear-gradient(135deg, #5a3010 0%, #3a2008 100%) !important;
-  border-color: transparent;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+.social-btn.alt{
+background:linear-gradient(135deg,#8a5a44,#d9b59b);
 }
 
-.btn.pressed .btn-ar { color: #fdfaf4; }
-.btn.pressed .btn-en { color: rgba(212, 175, 100, 0.7); }
-.btn.pressed .btn-ico { background: rgba(255, 255, 255, 0.15); color: #d4af64; }
-
-.btn-content { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; flex: 1; z-index: 1; }
-.btn-ar { font-size: 15px; font-weight: 800; color: #3a2008; transition: color 0.2s; }
-.btn-en { font-size: 10px; font-weight: 600; color: rgba(155,105,40,0.6); letter-spacing: 0.5px; text-transform: uppercase; transition: color 0.2s; }
-
-.btn-ico {
-  width: 40px; height: 40px; border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 16px; z-index: 1;
-  background: rgba(155, 105, 35, 0.07); color: #825019;
-  transition: all 0.3s;
+.social-btn:hover{
+transform:translateY(-3px);
+box-shadow:0 8px 15px rgba(0,0,0,0.2);
 }
 
-/* السوشال ميديا */
-.soc-title {
-  font-size: 11px; font-weight: 800; color: #825019;
-  letter-spacing: 2px; text-transform: uppercase; text-align: center;
-  margin-top: 15px; opacity: 0.7;
+@media (max-width:480px){
+.logo{width:120px;}
+h1{font-size:22px;}
+.btn{font-size:14px;padding:13px;}
+.container{padding:20px 12px;border-radius:20px;}
+.social-btn{font-size:20px;padding:16px 0;}
 }
-
-.soc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-.soc {
-  display: flex; flex-direction: column; align-items: center; gap: 6px;
-  padding: 15px 5px; border-radius: 18px; text-decoration: none;
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(212, 175, 100, 0.15);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-  transition: all 0.2s ease;
-}
-.soc i { font-size: 22px; }
-.soc span { font-size: 10px; font-weight: 700; color: #5a3010; }
-
-.soc:hover { background: #ffffff; box-shadow: 0 6px 15px rgba(155, 105, 35, 0.06); }
-.soc.wa i { color: #1a9e50; }
-.soc.sc i { color: #b8a000; }
-.soc.ig i { color: #c0335a; }
-
-/* أنيميشن دخول انسيابي */
-.fade-in { animation: fadeUp 0.5s cubic-bezier(0.25, 1, 0.5, 1) both; }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-.d1 { animation-delay: 0.05s } .d2 { animation-delay: 0.1s } .d3 { animation-delay: 0.15s }
-.d4 { animation-delay: 0.2s } .d5 { animation-delay: 0.25s } .d6 { animation-delay: 0.3s }
 </style>
 </head>
+
 <body>
 
-<div class="app-container">
+<div class="container">
 
-  <!-- هالات القمر اللطيفة بالخلفية -->
-  <div class="moon-halo halo-1"></div>
-  <div class="moon-halo halo-2"></div>
-
-  <!-- الهيدر الاستيكي المتفاعل والمستقر -->
-  <div class="hero" id="hero">
-    <div class="logo-wrap" id="logoWrap">
-      <img src="logo_clean.png" alt="جارة القمر" onerror="this.style.display='none';"> 
-    </div>
-    <p class="name-ar" id="nameAr">مقهى جارة القمر</p>
-    <p class="name-en" id="nameEn">Jarat Al Qamar</p>
-    <div class="hero-line" id="heroLine"></div>
+  <div class="logo">
+    <img src="logo_clean.png" alt="شعار المقهى">
   </div>
 
-  <!-- المحتوى وعناصر التوجيه -->
-  <div class="content">
+  <h1>مقهى جارة القمر</h1>
 
-    <div class="sep fade-in d1">
-      <div class="sep-line"></div>
-      <div class="sep-diamond"></div>
-      <div class="sep-line r"></div>
+  <div class="menu-buttons">
+
+    <a href="menu.html" class="btn">
+      منيو المشروبات | Drinks Menu
+    </a>
+
+    <a href="dessert.html" class="btn btn-alt">
+      منيو الحلويات | Dessert Menu
+    </a>
+
+    <!-- نفس حجم الزر -->
+    <a href="https://maps.app.goo.gl/EdWLHkH9VfmzNYXz9?g_st=ic" target="_blank" class="btn">
+  تجدونا في | Find us on
+</a>
     </div>
 
-    <!-- زر منيو المشروبات -->
-    <a href="menu.html" class="btn btn-1 fade-in d2">
-      <span class="btn-ico"><i class="fas fa-mug-hot"></i></span>
-      <span class="btn-content">
-        <span class="btn-ar">منيو المشروبات</span>
-        <span class="btn-en">Drinks Menu</span>
-      </span>
-    </a>
+    <div class="social-grid">
 
-    <!-- زر منيو الحلويات -->
-    <a href="dessert.html" class="btn btn-2 fade-in d3">
-      <span class="btn-ico"><i class="fas fa-cookie-bite"></i></span>
-      <span class="btn-content">
-        <span class="btn-ar">منيو الحلويات</span>
-        <span class="btn-en">Dessert Menu</span>
-      </span>
-    </a>
-
-    <!-- زر الخريطة -->
-    <a href="https://maps.app.goo.gl/EdWLHkH9VfmzNYXz9?g_st=ic" target="_blank" class="btn btn-3 fade-in d4">
-      <span class="btn-ico"><i class="fas fa-location-dot"></i></span>
-      <span class="btn-content">
-        <span class="btn-ar">تجدونا هنا</span>
-        <span class="btn-en">Find Us on Maps</span>
-      </span>
-    </a>
-
-    <p class="soc-title fade-in d5">تواصل معنا</p>
-    
-    <div class="soc-grid fade-in d6">
-      <a href="https://wa.me/966507462033" target="_blank" class="soc wa">
+      <a href="https://wa.me/966507462033" target="_blank" class="social-btn">
         <i class="fab fa-whatsapp"></i>
-        <span>واتساب</span>
       </a>
-      <a href="https://snapchat.com/t/sh2qHyb5" target="_blank" class="soc sc">
+
+      <a href="https://snapchat.com/t/sh2qHyb5" target="_blank" class="social-btn alt">
         <i class="fab fa-snapchat"></i>
-        <span>سناب</span>
       </a>
-      <a href="https://www.instagram.com/jaratalqamar.sa" target="_blank" class="soc ig">
+
+      <a href="https://www.instagram.com/jaratalqamar.sa" target="_blank" class="social-btn">
         <i class="fab fa-instagram"></i>
-        <span>إنستقرام</span>
       </a>
+
     </div>
 
   </div>
+
 </div>
-
-<script>
-// الاستماع إلى سكرول الشاشة بشكل ثابت بدون اهتزاز الصفحة
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 40) {
-    document.body.classList.add('scrolled');
-  } else {
-    document.body.classList.remove('scrolled');
-  }
-}, { passive: true });
-
-// تشغيل تأثير الضغط السلس التفاعلي على الأزرار
-document.querySelectorAll('.btn').forEach(btn => {
-  const startPress = () => btn.classList.add('pressed');
-  const endPress = () => btn.classList.remove('pressed');
-
-  btn.addEventListener('touchstart', startPress, { passive: true });
-  btn.addEventListener('touchend', endPress, { passive: true });
-  btn.addEventListener('touchcancel', endPress, { passive: true });
-
-  btn.addEventListener('mousedown', startPress);
-  btn.addEventListener('mouseup', endPress);
-  btn.addEventListener('mouseleave', endPress);
-});
-</script>
 
 </body>
 </html>
