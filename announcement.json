@@ -1,8 +1,7 @@
 {
-  "active": false,
-  "type": "image",
+  "active": true,
   "tag": "عرض خاص",
   "text": "",
-  "image_url": "",
-  "date": ""
+  "image_url": "offer.jpg",
+  "date": "يونيو 2025"
 }
