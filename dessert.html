@@ -3,155 +3,237 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>منيو حلويات المقهى</title>
-
+<title>منيو حلويات مقهى جارة القمر</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600;700&family=Amiri:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
 
-:root{
---bg:#f6efe8;
---card:#fffaf6;
---primary:#8a5a44;
---accent:#d9b59b;
---text:#3a2a24;
---muted:#8f7568;
---shadow:0 8px 24px rgba(102,72,56,0.10);
---radius:18px;
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-*{box-sizing:border-box}
-
-body{
-margin:0;
-font-family:"Cairo","Tahoma","Arial",sans-serif;
-background:linear-gradient(180deg,#fbf6f1 0%, #f3e8df 100%);
-color:var(--text);
-
-/* توسيط الصفحة */
-display:flex;
-justify-content:center;
+/* --- نفس ألوان الهوية المصدرية تماماً --- */
+:root {
+    --cream-0: #fdfaf3;
+    --cream-1: #f7eed8;
+    --gold: #c8952a;
+    --brown-dark: #2e1805;
+    --brown-mid: #5a3210;
+    --brown-light: #8a5a28;
+    --shadow-card: 0 4px 28px rgba(46,24,5,0.10), 0 1px 4px rgba(46,24,5,0.06);
+    --shadow-hover: 0 12px 40px rgba(46,24,5,0.18), 0 2px 8px rgba(46,24,5,0.08);
+    --radius: 20px;
+    --radius-sm: 12px;
 }
 
-.container{
-width:100%;
-max-width:420px;
-padding:10px;
+body {
+    font-family: "Cairo", sans-serif;
+    background: var(--cream-0);
+    color: var(--brown-dark);
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
 }
 
-/* الهيدر */
-.hero{
-background:linear-gradient(180deg,#fffaf6 0%, #f7ede5 100%);
-border-radius:24px;
-padding:28px 20px;
-text-align:center;
-margin-bottom:20px;
-box-shadow:var(--shadow);
+/* الإضاءة الخلفية من الهوية المصدرية */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: 
+        radial-gradient(ellipse 300px 220px at 80% -5%, rgba(200,149,42,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 260px 200px at -10% 90%, rgba(200,149,42,0.04) 0%, transparent 70%);
 }
 
-.logo-box{
-width:120px;
-height:120px;
-margin:auto;
+.container {
+    width: 100%;
+    max-width: 420px;
+    padding: 16px;
+    position: relative;
+    z-index: 5;
 }
 
-.logo-box img{
-width:100%;
-height:100%;
-object-fit:contain;
+/* --- الهيدر --- */
+.hero {
+    background: rgba(253, 250, 243, 0.7);
+    border: 1px solid rgba(200, 149, 42, 0.12);
+    border-radius: var(--radius);
+    padding: 24px 20px;
+    text-align: center;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(10px);
 }
 
-h1{
-margin:6px 0;
-font-size:26px;
-color:var(--primary);
+.logo-box {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.tagline{
-font-size:16px;
-color:var(--primary);
-font-family:"Amiri", serif;
-font-weight:700;
+.logo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
-.badge{
-margin-top:10px;
-background:var(--accent);
-color:#fff;
-padding:8px 16px;
-border-radius:999px;
+.hero h1 {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--brown-dark);
+    margin-bottom: 12px;
 }
 
-.section-title{
-font-size:18px;
-margin:10px 0 14px;
-color:var(--primary);
-text-align:center;
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(200, 149, 42, 0.12);
+    border: 1px solid rgba(200, 149, 42, 0.30);
+    color: var(--brown-mid);
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+.badge i {
+    color: var(--gold);
 }
 
-/* المنتجات */
-.products{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px;
+/* --- عنوان القسم مع الزخرفة المصدرية --- */
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+.section-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--brown-dark);
+    white-space: nowrap;
+}
+.orn-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(200,149,42,0.2), transparent);
+}
+.orn-line.l {
+    background: linear-gradient(90deg, transparent, rgba(200,149,42,0.2));
+}
+.orn-diamond {
+    width: 5px;
+    height: 5px;
+    transform: rotate(45deg);
+    background: rgba(200, 149, 42, 0.35);
+    border-radius: 1px;
 }
 
-/* للجوال الصغير */
-@media (max-width:480px){
-.products{
-grid-template-columns:1fr;
-}
-}
-
-.card{
-background:var(--card);
-border-radius:var(--radius);
-padding:10px;
-text-align:center;
-box-shadow:var(--shadow);
-transition:0.2s;
+/* --- المنتجات (البطاقات) --- */
+.products {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
 }
 
-.card:hover{
-transform:translateY(-4px);
+@media (max-width: 360px) {
+    .products {
+        grid-template-columns: 1fr;
+    }
 }
 
-.image-wrap{
-height:130px;
-display:flex;
-align-items:center;
-justify-content:center;
+.card {
+    /* تدرج لون الحلويات من الكود المصدر */
+    background: linear-gradient(140deg, #ecdfd0, #e2cdb8);
+    border: 1.5px solid rgba(180, 130, 60, 0.15);
+    border-radius: var(--radius);
+    padding: 14px 10px;
+    text-align: center;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s, border-color 0.25s;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
 }
 
-.image-wrap img{
-width:100%;
-height:auto;
-max-height:120px;
-object-fit:contain;
-transition:0.3s;
+.card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(140deg, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+    pointer-events: none;
 }
 
-.card:hover img{
-transform:scale(1.05);
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(200, 149, 42, 0.32);
 }
 
-.product-name{
-font-size:14px;
-margin:6px 0;
+.image-wrap {
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 2;
 }
 
-.price{
-background:var(--accent);
-color:#fff;
-padding:5px 10px;
-border-radius:14px;
-font-size:13px;
+.image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 6px 12px rgba(46, 24, 5, 0.15)); /* ظل خفيف للصورة لتبدو بارزة */
 }
 
-.footer-note{
-text-align:center;
-font-size:12px;
-color:var(--muted);
-margin-top:15px;
+.card:hover img {
+    transform: scale(1.08);
+}
+
+.product-name {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--brown-dark);
+    margin: 8px 0;
+    position: relative;
+    z-index: 2;
+}
+
+/* السعر مصمم على طريقة الأيقونات في الكود المصدر */
+.price {
+    display: inline-block;
+    background: rgba(150, 90, 30, 0.12);
+    color: var(--brown-dark);
+    padding: 4px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    font-weight: 800;
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba(180, 130, 60, 0.1);
+}
+
+/* --- الفوتر --- */
+.footer-note {
+    text-align: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: rgba(138, 90, 40, 0.45);
+    letter-spacing: 1px;
+    margin-top: 30px;
+    padding-bottom: 20px;
 }
 </style>
 </head>
@@ -160,72 +242,54 @@ margin-top:15px;
 
 <div class="container">
 
-<section class="hero">
-<div class="logo-box">
-<img src="logo_clean.png">
-</div>
+    <section class="hero">
+        <div class="logo-box">
+            <img src="logo_clean.png" alt="جارة القمر">
+        </div>
+        <h1>مقهى جارة القمر</h1>
+        <div class="badge">
+            <i class="fas fa-cookie-bite"></i>
+            منيو الحلويات
+        </div>
+    </section>
 
-<div class="badge">منيو الحلويات</div>
-</section>
+    <!-- الفاصل الزخرفي المستوحى من الهوية -->
+    <div class="section-header">
+        <div class="orn-line l"></div>
+        <div class="orn-diamond"></div>
+        <h2 class="section-title">الأصناف</h2>
+        <div class="orn-diamond"></div>
+        <div class="orn-line"></div>
+    </div>
 
-<h2 class="section-title">الأصناف</h2>
+    <section class="products">
+        <article class="card"><div class="image-wrap"><img src="sanspastian.png" alt="تشيز سان سبستيان"></div><h3 class="product-name">تشيز سان سبستيان</h3><span class="price">20 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="roundedsnaspastian.png" alt="تشيز سان سبستيان"></div><h3 class="product-name">تشيز سان سبستيان</h3><span class="price">20 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="london cake.png" alt="كيك لندن"></div><h3 class="product-name">كيك لندن</h3><span class="price">16 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="madreid chees.png" alt="تشيز مدريد"></div><h3 class="product-name">تشيز مدريد</h3><span class="price">19 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="MagicEraser_260319_172526.png" alt="كيك جالكسي"></div><h3 class="product-name">كيك جالكسي</h3><span class="price">19 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="lava cake.png" alt="لافا كيك"></div><h3 class="product-name">لافا كيك</h3><span class="price">19 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="boding cold.png" alt="بودينق بارد"></div><h3 class="product-name">بودينق بارد</h3><span class="price">17 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="chocopudding.png" alt="بودينق"></div><h3 class="product-name">بودينق</h3><span class="price">17 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="coucant.png" alt="كيك كوكنت"></div><h3 class="product-name">كيك كوكنت</h3><span class="price">18 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="MagicEraser_260320_001709.png" alt="تراميسو"></div><h3 class="product-name">تراميسو</h3><span class="price">17 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="MagicEraser_260319_173222.png" alt="آيس كريم شوكو فانيلا"></div><h3 class="product-name">آيس كريم شوكو فانيلا</h3><span class="price">18 ر.س</span></article>  
+        <article class="card"><div class="image-wrap"><img src="magloob.png" alt="تشيزكيك توت أزرق"></div><h3 class="product-name">تشيزكيك توت أزرق</h3><span class="price">19 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="MagicEraser_260320_001719.png" alt="تشيز كيك توت"></div><h3 class="product-name">تشيز كيك توت</h3><span class="price">18 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="snecrs.png" alt="تشيز كيك سنيكرز"></div><h3 class="product-name">تشيز كيك سنيكرز</h3><span class="price">17 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="snakerss cake.png" alt="كيك سنيكرز"></div><h3 class="product-name">كيك سنيكرز</h3><span class="price">17 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="honeycake.png" alt="كيكة عسل"></div><h3 class="product-name">كيكة عسل</h3><span class="price">15 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="carotcake.png" alt="كيكة جزر"></div><h3 class="product-name">كيكة جزر</h3><span class="price">15 ر.س</span></article>  
+        <article class="card"><div class="image-wrap"><img src="big ban mix.png" alt="بان كيك فيوتين كبير"></div><h3 class="product-name">بان كيك فيوتين كبير</h3><span class="price">25 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="small ban mix.png" alt="بان كيك فيوتين صغير"></div><h3 class="product-name">بان كيك فيوتين صغير</h3><span class="price">15 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="croason.png" alt="كرواسون"></div><h3 class="product-name">كرواسون</h3><span class="price">9 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="englishcake.png" alt="كيك انجليزي"></div><h3 class="product-name">كيك انجليزي</h3><span class="price">8 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="cookis.png" alt="كوكيز فانيلا"></div><h3 class="product-name">كوكيز فانيلا</h3><span class="price">9 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="browneze.png" alt="براونيز"></div><h3 class="product-name">براونيز</h3><span class="price">9 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="prawnez pec.png" alt="براونيز قطع"></div><h3 class="product-name">براونيز قطع</h3><span class="price">9 ر.س</span></article>
+    </section>
 
-<section class="products">
-  
-  
-<article class="card"><div class="image-wrap"><img src="sanspastian.png"></div><h3 class="product-name">تشيز سان سبستيان</h3><span class="price">20 ر.س</span></article>
-
-<article class="card"><div class="image-wrap"><img src="roundedsnaspastian.png"></div><h3 class="product-name">تشيز سان سبستيان  </h3><span class="price">20 ر.س</span></article>
-
-<article class="card"><div class="image-wrap"><img src="london cake.png"></div><h3 class="product-name">كيك لندن</h3><span class="price">16 ر.س</span></article>
-
-<article class="card"><div class="image-wrap"><img src="madreid chees.png"></div><h3 class="product-name">تشيز مدريد  </h3><span class="price">19 ر.س</span></article>
- 
-<article class="card"><div class="image-wrap"><img src="MagicEraser_260319_172526.png"></div><h3 class="product-name">كيك جالكسي</h3><span class="price">19 ر.س</span></article>
-
-<article class="card"><div class="image-wrap"><img src="lava cake.png"></div><h3 class="product-name">لافا كيك</h3><span class="price">19 ر.س</span></article>
-
-<article class="card"><div class="image-wrap"><img src="boding cold.png"></div><h3 class="product-name">بودينق بارد</h3><span class="price">17 ر.س</span></article>
-
-<article class="card"><div class="image-wrap"><img src="chocopudding.png"></div><h3 class="product-name">بودينق</h3><span class="price">17 ر.س</span></article>
-  
-<article class="card"><div class="image-wrap"><img src="coucant.png"></div><h3 class="product-name">كيك كوكنت</h3><span class="price">18 ر.س</span></article>
-  
-<article class="card"><div class="image-wrap"><img src="MagicEraser_260320_001709.png"></div><h3 class="product-name">تراميسو</h3><span class="price">17 ر.س</span></article>
-
-<!--<article class="card"><div class="image-wrap"><img src="ice creem coucnt.png"></div><h3 class="product-name">آيس كريم كوكنت</h3><span class="price">18 ر.س</span></article>-->
-
-<article class="card"><div class="image-wrap"><img src="MagicEraser_260319_173222.png"></div><h3 class="product-name">آيس كريم شوكو فانيلا</h3><span class="price">18 ر.س</span></article>  
-  
-<article class="card"><div class="image-wrap"><img src="magloob.png"></div><h3 class="product-name">تشيزكيك توت أزرق</h3><span class="price">19 ر.س</span></article>
-  
-<article class="card"><div class="image-wrap"><img src="MagicEraser_260320_001719.png"></div><h3 class="product-name">تشيز كيك توت</h3><span class="price">18 ر.س</span></article>
-
-<article class="card"><div class="image-wrap"><img src="snecrs.png"></div><h3 class="product-name">تشيز كيك سنيكرز</h3><span class="price">17 ر.س</span></article>
-
-<article class="card"><div class="image-wrap"><img src="snakerss cake.png"></div><h3 class="product-name"> كيك سنيكرز</h3><span class="price">17 ر.س</span></article>
-     
-<article class="card"><div class="image-wrap"><img src="honeycake.png"></div><h3 class="product-name">كيكة عسل</h3><span class="price">15 ر.س</span></article>
-
-<article class="card"><div class="image-wrap"><img src="carotcake.png"></div><h3 class="product-name">كيكة جزر</h3><span class="price">15 ر.س</span></article>  
- 
-<article class="card"><div class="image-wrap"><img src="big ban mix.png"></div><h3 class="product-name">بان كيك فيوتين كبير</h3><span class="price">25 ر.س</span></article>
-
-<article class="card"><div class="image-wrap"><img src="small ban mix.png"></div><h3 class="product-name">بان كيك فيوتين صغير</h3><span class="price">15 ر.س</span></article>
-    
-<article class="card"><div class="image-wrap"><img src="croason.png"></div><h3 class="product-name">كرواسون</h3><span class="price">9 ر.س</span></article>
-
-<article class="card"><div class="image-wrap"><img src="englishcake.png"></div><h3 class="product-name">كيك انجليزي</h3><span class="price">8 ر.س</span></article>
-
-<article class="card"><div class="image-wrap"><img src="cookis.png"></div><h3 class="product-name">كوكيز فانيلا</h3><span class="price">9 ر.س</span></article>
-
-<article class="card"><div class="image-wrap"><img src="browneze.png"></div><h3 class="product-name">براونيز</h3><span class="price">9 ر.س</span></article>
-  
-<article class="card"><div class="image-wrap"><img src="prawnez pec.png"></div><h3 class="product-name">براونيز قطع</h3><span class="price">9 ر.س</span></article>
-  
-</section>
-
-<p class="footer-note">♡من جارة القمر للحظاتكم الأجمل</p>
+    <p class="footer-note">♡ من جارة القمر للحظاتكم الأجمل</p>
 
 </div>
 
