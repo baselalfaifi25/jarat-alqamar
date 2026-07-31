@@ -28,7 +28,6 @@ body{font-family:"Cairo",sans-serif;background:var(--cream-0);min-height:100vh;d
   padding:36px 24px 22px;
   background:rgba(253,250,243,0.97);
   border-bottom:1px solid rgba(200,149,42,0.12);
-  /* will-change يحجز layer منفصل ويمنع الاهتزاز */
   will-change:transform;
   transform:translateZ(0);
   -webkit-transform:translateZ(0);
@@ -60,7 +59,6 @@ body{font-family:"Cairo",sans-serif;background:var(--cream-0);min-height:100vh;d
 .ann-tag span{font-size:9px;font-weight:700;color:rgba(220,175,80,0.9);letter-spacing:2px;text-transform:uppercase;}
 .ann-tag i{font-size:9px;color:rgba(220,175,80,0.8);}
 
-/* صورة الإعلان */
 .ann-img{
   width:100%;border-radius:12px;display:block;margin-bottom:10px;
   object-fit:contain;
@@ -86,15 +84,20 @@ body{font-family:"Cairo",sans-serif;background:var(--cream-0);min-height:100vh;d
 .action-card::after{content:'';position:absolute;inset:0;background:linear-gradient(140deg,rgba(255,255,255,0.22) 0%,transparent 55%);pointer-events:none;}
 .card-drinks{background:linear-gradient(140deg,#f2e6d0,#e8d5b8);border-color:rgba(200,149,42,0.18);}
 .card-dessert{background:linear-gradient(140deg,#ecdfd0,#e2cdb8);border-color:rgba(180,130,60,0.15);}
+/* تخصيص لون زر الولاء ليكون مميزاً ومرتبطاً بهوية الهدايا/الولاء الذهبية */
+.card-loyalty{background:linear-gradient(140deg,#faebd7,#ecd4a9);border-color:rgba(200,149,42,0.35);}
 .card-map{background:linear-gradient(140deg,#e5d5c0,#dac8b0);border-color:rgba(160,110,50,0.14);}
+
 .action-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover);border-color:rgba(200,149,42,0.32);}
 .action-card.pressed.card-drinks{background:linear-gradient(135deg,#3d2008,#6a3c18);border-color:transparent;}
 .action-card.pressed.card-dessert{background:linear-gradient(135deg,#4a2610,#7c4220);border-color:transparent;}
+.action-card.pressed.card-loyalty{background:linear-gradient(135deg,#4a350e,#8a681c);border-color:transparent;}
 .action-card.pressed.card-map{background:linear-gradient(135deg,#2e1c08,#5a3018);border-color:transparent;}
 .action-card.pressed .card-title{color:#fdf0dd;}
 .action-card.pressed .card-sub{color:rgba(253,220,170,0.55);}
 .action-card.pressed .card-icon-wrap{background:rgba(255,255,255,0.1);color:rgba(253,210,140,0.9);}
 .action-card.pressed .card-arrow{color:rgba(253,200,120,0.5);}
+
 .card-icon-wrap{width:46px;height:46px;border-radius:13px;background:rgba(150,90,30,0.10);color:rgba(120,70,20,0.75);
   display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;transition:background 0.25s,color 0.25s;}
 .card-body{flex:1;}
@@ -176,7 +179,17 @@ body{font-family:"Cairo",sans-serif;background:var(--cream-0);min-height:100vh;d
       <i class="fas fa-chevron-left card-arrow"></i>
     </a>
 
-    <a href="https://maps.app.goo.gl/EdWLHkH9VfmzNYXz9?g_st=ic" target="_blank" class="action-card card-map fade-up d4">
+    <!-- خانة برنامج الولاء المضافة حديثاً -->
+    <a href="https://loyapro.com/c-r/NzkzMw==" target="_blank" class="action-card card-loyalty fade-up d4">
+      <span class="card-icon-wrap" style="color: #c8952a; background: rgba(200,149,42,0.15);"><i class="fas fa-crown"></i></span>
+      <span class="card-body">
+        <span class="card-title">انضم إلى الولاء</span>
+        <span class="card-sub">Loyalty Program</span>
+      </span>
+      <i class="fas fa-chevron-left card-arrow"></i>
+    </a>
+
+    <a href="https://maps.app.goo.gl/EdWLHkH9VfmzNYXz9?g_st=ic" target="_blank" class="action-card card-map fade-up d5">
       <span class="card-icon-wrap"><i class="fas fa-location-dot"></i></span>
       <span class="card-body">
         <span class="card-title">تجدونا هنا</span>
@@ -185,8 +198,8 @@ body{font-family:"Cairo",sans-serif;background:var(--cream-0);min-height:100vh;d
       <i class="fas fa-chevron-left card-arrow"></i>
     </a>
 
-    <p class="soc-label fade-up d5">تواصل معنا</p>
-    <div class="soc-row fade-up d6">
+    <p class="soc-label fade-up d6">تواصل معنا</p>
+    <div class="soc-row fade-up d7">
       <a href="https://wa.me/966507462033" target="_blank" class="soc-btn soc-wa">
         <i class="fab fa-whatsapp"></i><span>واتساب</span>
       </a>
@@ -219,12 +232,11 @@ document.querySelectorAll('.action-card').forEach(c => {
 async function loadAnnouncement() {
   const wrap = document.getElementById('ann-wrap');
   try {
-    // يضيف timestamp لمنع الـ cache
     const res  = await fetch('announcement.json?t=' + Date.now());
     if (!res.ok) return;
     const data = await res.json();
 
-    if (!data.active) return; // الإعلان مخفي
+    if (!data.active) return;
 
     let html = `
       <div class="ann-card">
@@ -233,12 +245,10 @@ async function loadAnnouncement() {
           <span>${data.tag || 'إعلان'}</span>
         </div>`;
 
-    // صورة
     if (data.image_url && data.image_url.trim()) {
       html += `<img class="ann-img" src="${data.image_url}" alt="إعلان" loading="lazy">`;
     }
 
-    // نص
     if (data.text && data.text.trim()) {
       html += `<p class="ann-text">${data.text}</p>`;
     }
@@ -251,9 +261,7 @@ async function loadAnnouncement() {
     wrap.innerHTML = html;
     wrap.classList.add('show');
 
-  } catch(e) {
-    // لو فشل الـ fetch (مثلاً في local) — بدون أي ضرر
-  }
+  } catch(e) {}
 }
 
 loadAnnouncement();
