@@ -15,6 +15,7 @@
   --shadow-hover:0 12px 40px rgba(46,24,5,0.18),0 2px 8px rgba(46,24,5,0.08);
   --radius:20px;--radius-sm:12px;
 }
+
 body{font-family:"Cairo",sans-serif;background:var(--cream-0);min-height:100vh;display:flex;justify-content:center;overflow-x:hidden;}
 .shell{width:390px;min-height:100dvh;background:var(--cream-0);position:relative;overflow:hidden;box-shadow:0 0 80px rgba(0,0,0,0.2);}
 .shell::before{content:'';position:fixed;inset:0;width:390px;pointer-events:none;z-index:0;
@@ -32,11 +33,13 @@ body{font-family:"Cairo",sans-serif;background:var(--cream-0);min-height:100vh;d
   transform:translateZ(0);
   -webkit-transform:translateZ(0);
 }
+
 .logo-ring{
   width:120px;height:120px;
   display:flex;align-items:center;justify-content:center;
   margin-bottom:8px;flex-shrink:0;
 }
+
 .logo-ring img{width:100%;height:100%;object-fit:contain;}
 .logo-ring .fi{font-size:48px;color:var(--gold);}
 .cafe-name{font-size:20px;font-weight:900;color:var(--brown-dark);letter-spacing:0.5px;}
@@ -51,11 +54,13 @@ body{font-family:"Cairo",sans-serif;background:var(--cream-0);min-height:100vh;d
   border-radius:var(--radius);padding:18px 18px 16px;position:relative;overflow:hidden;
   box-shadow:0 8px 32px rgba(46,24,5,0.22),0 1px 0 rgba(200,149,42,0.15) inset;
   margin:14px 0 4px;}
+
 .ann-card::before{content:'';position:absolute;top:-40px;right:-40px;width:130px;height:130px;
   border-radius:50%;background:radial-gradient(circle,rgba(200,149,42,0.15),transparent 65%);pointer-events:none;}
 
 .ann-tag{display:inline-flex;align-items:center;gap:5px;background:rgba(200,149,42,0.18);
   border:1px solid rgba(200,149,42,0.30);border-radius:6px;padding:3px 8px;margin-bottom:10px;}
+
 .ann-tag span{font-size:9px;font-weight:700;color:rgba(220,175,80,0.9);letter-spacing:2px;text-transform:uppercase;}
 .ann-tag i{font-size:9px;color:rgba(220,175,80,0.8);}
 
@@ -81,10 +86,10 @@ body{font-family:"Cairo",sans-serif;background:var(--cream-0);min-height:100vh;d
   text-decoration:none;border:1.5px solid transparent;position:relative;overflow:hidden;
   transition:transform 0.22s cubic-bezier(0.4,0,0.2,1),box-shadow 0.22s,border-color 0.22s;
   -webkit-tap-highlight-color:transparent;cursor:pointer;box-shadow:var(--shadow-card);}
+
 .action-card::after{content:'';position:absolute;inset:0;background:linear-gradient(140deg,rgba(255,255,255,0.22) 0%,transparent 55%);pointer-events:none;}
 .card-drinks{background:linear-gradient(140deg,#f2e6d0,#e8d5b8);border-color:rgba(200,149,42,0.18);}
 .card-dessert{background:linear-gradient(140deg,#ecdfd0,#e2cdb8);border-color:rgba(180,130,60,0.15);}
-/* تخصيص لون زر الولاء ليكون مميزاً ومرتبطاً بهوية الهدايا/الولاء الذهبية */
 .card-loyalty{background:linear-gradient(140deg,#faebd7,#ecd4a9);border-color:rgba(200,149,42,0.35);}
 .card-map{background:linear-gradient(140deg,#e5d5c0,#dac8b0);border-color:rgba(160,110,50,0.14);}
 
@@ -107,11 +112,15 @@ body{font-family:"Cairo",sans-serif;background:var(--cream-0);min-height:100vh;d
 
 /* SOCIAL */
 .soc-label{font-size:9px;font-weight:700;color:rgba(120,80,25,0.28);letter-spacing:3px;text-transform:uppercase;text-align:center;margin-top:6px;}
-.soc-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+
+/* تم تعديلها فقط من 3 إلى 4 أعمدة */
+.soc-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+
 .soc-btn{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 6px;border-radius:16px;
   text-decoration:none;background:rgba(255,255,255,0.65);border:1px solid rgba(200,149,42,0.10);
   box-shadow:0 2px 10px rgba(0,0,0,0.04),inset 0 1px 0 rgba(255,255,255,0.95);
   transition:transform 0.2s,box-shadow 0.2s,background 0.2s,border-color 0.2s;-webkit-tap-highlight-color:transparent;}
+
 .soc-btn i{font-size:22px;}
 .soc-btn span{font-size:9px;font-weight:700;font-family:"Cairo",sans-serif;color:rgba(90,50,16,0.35);}
 .soc-btn:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,0.09);}
@@ -121,6 +130,7 @@ body{font-family:"Cairo",sans-serif;background:var(--cream-0);min-height:100vh;d
 .soc-sc i{color:#a89800;}
 .soc-ig:hover{background:rgba(255,230,240,0.95);border-color:rgba(200,50,100,0.22);}
 .soc-ig i{color:#c0335a;}
+
 .footer-line{text-align:center;font-size:9px;font-weight:600;color:rgba(138,90,40,0.22);letter-spacing:2px;padding-top:8px;}
 
 /* ANIMATIONS */
@@ -135,6 +145,7 @@ body{font-family:"Cairo",sans-serif;background:var(--cream-0);min-height:100vh;d
 @keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
 </style>
 </head>
+
 <body>
 <div class="shell" id="shell">
 
@@ -199,16 +210,25 @@ body{font-family:"Cairo",sans-serif;background:var(--cream-0);min-height:100vh;d
     </a>
 
     <p class="soc-label fade-up d6">تواصل معنا</p>
+
     <div class="soc-row fade-up d7">
+
       <a href="https://wa.me/966507462033" target="_blank" class="soc-btn soc-wa">
         <i class="fab fa-whatsapp"></i><span>واتساب</span>
       </a>
+
       <a href="https://snapchat.com/t/ACNjuNG7" target="_blank" class="soc-btn soc-sc">
         <i class="fab fa-snapchat"></i><span>سناب</span>
       </a>
+
       <a href="https://www.instagram.com/jaratalqamar.sa" target="_blank" class="soc-btn soc-ig">
         <i class="fab fa-instagram"></i><span>إنستقرام</span>
       </a>
+
+      <a href="https://www.tiktok.com/@jaratalqamar.sa?_r=1&_t=ZS-9A1vitMix6K" target="_blank" class="soc-btn soc-tiktok">
+        <i class="fab fa-tiktok"></i><span>تيك توك</span>
+      </a>
+
     </div>
 
     <p class="footer-line fade-up d8">مقهى جارة القمر &nbsp;·&nbsp; سعدنا بزيارتكم</p>
@@ -231,6 +251,7 @@ document.querySelectorAll('.action-card').forEach(c => {
 // ── Load announcement from JSON ──
 async function loadAnnouncement() {
   const wrap = document.getElementById('ann-wrap');
+
   try {
     const res  = await fetch('announcement.json?t=' + Date.now());
     if (!res.ok) return;
@@ -266,5 +287,6 @@ async function loadAnnouncement() {
 
 loadAnnouncement();
 </script>
+
 </body>
 </html>
