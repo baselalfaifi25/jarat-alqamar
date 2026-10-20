@@ -283,6 +283,63 @@ body::before {
 }
 .back-to-top[hidden] { display: none; }
 .footer-note { padding-bottom: 80px; }
+
+/* صور موحدة ونافذة معاينة */
+.products { align-items: stretch; }
+.card { display: flex; flex-direction: column; align-items: stretch; }
+.image-wrap {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    padding: 6px;
+    flex-shrink: 0;
+}
+.image-wrap img { display: block; object-fit: contain; object-position: center; }
+.product-name { min-height: 42px; display: flex; align-items: center; justify-content: center; }
+.price { align-self: center; margin-top: auto; }
+.image-preview-trigger {
+    border: 0;
+    background: transparent;
+    border-radius: var(--radius-sm);
+    cursor: zoom-in;
+    font: inherit;
+}
+.image-preview-trigger:focus-visible, .preview-close:focus-visible {
+    outline: 3px solid var(--brown-mid);
+    outline-offset: 3px;
+}
+.product-preview {
+    width: min(92vw, 520px);
+    max-height: 90dvh;
+    margin: auto;
+    padding: 20px;
+    overflow-y: auto;
+    border: 1px solid var(--gold);
+    border-radius: var(--radius);
+    background: var(--cream-0);
+    color: var(--brown-dark);
+    box-shadow: var(--shadow-hover);
+    text-align: center;
+}
+.product-preview::backdrop { background: rgba(25,14,5,.72); }
+.preview-close {
+    display: block;
+    margin-inline-start: auto;
+    min-width: 44px;
+    min-height: 44px;
+    border: 1px solid rgba(200,149,42,.3);
+    border-radius: 50%;
+    background: var(--cream-1);
+    color: var(--brown-dark);
+    font-size: 26px;
+    cursor: pointer;
+}
+.preview-image { display: block; width: 100%; height: min(55dvh, 380px); object-fit: contain; margin: 12px auto; }
+.preview-name { font-size: 20px; margin-bottom: 12px; }
+.preview-price { display: inline-block; margin-bottom: 8px; }
+@media (prefers-reduced-motion: reduce) {
+    .card, .image-wrap img { transition: none; }
+}
 </style>
 </head>
 
@@ -376,6 +433,55 @@ body::before {
             top: 0,
             behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
         });
+    });
+})();
+</script>
+
+<dialog class="product-preview" aria-labelledby="preview-name">
+    <button class="preview-close" type="button" aria-label="إغلاق الصورة" autofocus>×</button>
+    <img class="preview-image" alt="">
+    <h2 class="preview-name" id="preview-name"></h2>
+    <p class="price preview-price"></p>
+</dialog>
+<script>
+(() => {
+    const dialog = document.querySelector('.product-preview');
+    if (!dialog || typeof dialog.showModal !== 'function') return;
+    const image = dialog.querySelector('.preview-image');
+    const title = dialog.querySelector('.preview-name');
+    const price = dialog.querySelector('.preview-price');
+    let previousOverflow = '';
+    document.querySelectorAll('.products .card').forEach(card => {
+        const wrap = card.querySelector('.image-wrap');
+        const source = wrap.querySelector('img');
+        const name = card.querySelector('.product-name').textContent.trim();
+        const trigger = document.createElement('button');
+        trigger.type = 'button';
+        trigger.className = 'image-wrap image-preview-trigger';
+        trigger.setAttribute('aria-label', 'تكبير صورة ' + name);
+        trigger.setAttribute('aria-haspopup', 'dialog');
+        wrap.replaceWith(trigger);
+        trigger.append(source);
+        trigger.addEventListener('click', () => {
+            image.src = source.currentSrc || source.src;
+            image.alt = name;
+            title.textContent = name;
+            price.textContent = card.querySelector('.price').textContent;
+            previousOverflow = document.body.style.overflow;
+            document.body.style.overflow = 'hidden';
+            dialog.showModal();
+        });
+    });
+    dialog.querySelector('.preview-close').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', event => {
+        const rect = dialog.getBoundingClientRect();
+        if (event.target === dialog &&
+            (event.clientX < rect.left || event.clientX > rect.right ||
+             event.clientY < rect.top || event.clientY > rect.bottom)) dialog.close();
+    });
+    dialog.addEventListener('close', () => {
+        document.body.style.overflow = previousOverflow;
+        image.removeAttribute('src');
     });
 })();
 </script>
