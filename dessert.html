@@ -340,6 +340,30 @@ body::before {
 @media (prefers-reduced-motion: reduce) {
     .card, .image-wrap img { transition: none; }
 }
+
+/* Fit the visible product, rather than its transparent source canvas. */
+.image-wrap, .preview-stage {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    padding: 0;
+    overflow: hidden;
+    isolation: isolate;
+}
+.image-wrap img, .preview-stage img {
+    position: absolute;
+    width: var(--photo-width, 100%);
+    max-width: none;
+    height: auto;
+    left: var(--photo-left, 0%);
+    top: var(--photo-top, 0%);
+    object-fit: initial;
+    margin: 0;
+    filter: none;
+    transform: none;
+}
+.card:hover img { transform: none; }
+.preview-stage { width: 100%; margin: 12px auto; }
+
 </style>
 </head>
 
@@ -372,43 +396,43 @@ body::before {
     </div>
 
     <section class="products">
-        <article class="card"><div class="image-wrap"><img src="doulchi cake 3.png" alt=" دولتشي كيك"></div><h3 class="product-name"> دولتشي كيك</h3><span class="price">22 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="london cake.png" alt="كيك لندن"></div><h3 class="product-name">كيك لندن</h3><span class="price">16 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="pekan cake.png" alt="كيك بيكان"></div><h3 class="product-name">كيك بيكان</h3><span class="price">20 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="boding peckan.png" alt="بودينق بيكان"></div><h3 class="product-name">بودينق بيكان</h3><span class="price">20 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="sanspastian.png" alt=" سان سبستيان"></div><h3 class="product-name"> سان سبستيان</h3><span class="price">20 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="roundedsnaspastian.png" alt=" سان سبستيان دائري"></div><h3 class="product-name"> سان سبستيان دائري</h3><span class="price">20 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="cocie creem.png" alt="كوكي كريم"></div><h3 class="product-name">كوكي كريم</h3><span class="price">16 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="san termeso.png" alt=" سان سبستيان تراميسو"></div><h3 class="product-name"> سان سبستيان تراميسو</h3><span class="price">19 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="san marbel.png" alt=" سان سبستيان ماربل"></div><h3 class="product-name"> سان سبستيان ماربل</h3><span class="price">19 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="san Chocolate .png" alt="سان سبستيان شوكلاتة"></div><h3 class="product-name">سان سبستيان شوكلاتة</h3><span class="price">19 ر.س</span></article>
-        <!--<article class="card"><div class="image-wrap"><img src="sanred.png" alt="سان سبستيان ريد فلفت"></div><h3 class="product-name">سان سبستيان ريد فلفت</h3><span class="price">19 ر.س</span></article>-->
-        <article class="card"><div class="image-wrap"><img src="madreid chees.png" alt="تشيز مدريد"></div><h3 class="product-name">تشيز مدريد</h3><span class="price">19 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="goldn cake.png" alt="الكيكة الذهبية"></div><h3 class="product-name">الكيكة الذهبية</h3><span class="price">19 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="Chocolate Crunch.png" alt="شوكولاتة كرانشي"></div><h3 class="product-name">شوكولاتة كرانشي</h3><span class="price">18 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="ora cake1 .png" alt="اوبرا كيك"></div><h3 class="product-name">اوبرا كيك</h3><span class="price">18 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="chocopudding.png" alt="بودينق"></div><h3 class="product-name">بودينق</h3><span class="price">17 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="MagicEraser_260319_172526.png" alt="كيك جالكسي"></div><h3 class="product-name">كيك جالكسي</h3><span class="price">19 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="lava cake.png" alt="لافا كيك"></div><h3 class="product-name">لافا كيك</h3><span class="price">19 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="hony cake new squar.png" alt="كيك عسل مربع"></div><h3 class="product-name">كيك عسل مربع</h3><span class="price">19 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="wafel asb.png" alt="أصابع الوافل"></div><h3 class="product-name"> أصابع الوافل</h3><span class="price">10 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="coucant.png" alt="كيك كوكنت"></div><h3 class="product-name">كيك كوكنت</h3><span class="price">18 ر.س</span></article>
-        <!--<article class="card"><div class="image-wrap"><img src="MagicEraser_260320_001709.png" alt="تراميسو"></div><h3 class="product-name">تراميسو</h3><span class="price">17 ر.س</span></article>-->
-        <article class="card"><div class="image-wrap"><img src="MagicEraser_260319_173222.png" alt="آيس كريم شوكو فانيلا"></div><h3 class="product-name">آيس كريم شوكو فانيلا</h3><span class="price">18 ر.س</span></article>  
-        <article class="card"><div class="image-wrap"><img src="magloob.png" alt="تشيزكيك توت أزرق"></div><h3 class="product-name">تشيزكيك توت أزرق</h3><span class="price">19 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="MagicEraser_260320_001719.png" alt="تشيز كيك توت"></div><h3 class="product-name">تشيز كيك توت</h3><span class="price">18 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="snecrs.png" alt="تشيز كيك سنيكرز"></div><h3 class="product-name">تشيز كيك سنيكرز</h3><span class="price">17 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="snakerss cake.png" alt="كيك سنيكرز"></div><h3 class="product-name">كيك سنيكرز</h3><span class="price">17 ر.س</span></article>
-       <!-- <article class="card"><div class="image-wrap"><img src="honeycake.png" alt="كيكة عسل"></div><h3 class="product-name">كيكة عسل</h3><span class="price">15 ر.س</span></article>-->
-        <article class="card"><div class="image-wrap"><img src="carotcake.png" alt="كيكة جزر"></div><h3 class="product-name">كيكة جزر</h3><span class="price">15 ر.س</span></article> 
-        <!--<article class="card"><div class="image-wrap"><img src="knafh ball 2.png" alt="كرات كنافة"></div><h3 class="product-name">كرات كنافة</h3><span class="price">10 ر.س</span></article>-->
-        <article class="card"><div class="image-wrap"><img src="big ban mix.png" alt="بان كيك فيوتين كبير"></div><h3 class="product-name">بان كيك فيوتين كبير</h3><span class="price">25 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="small ban mix.png" alt="بان كيك فيوتين صغير"></div><h3 class="product-name">بان كيك فيوتين صغير</h3><span class="price">15 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="croason.png" alt="كرواسون"></div><h3 class="product-name">كرواسون</h3><span class="price">9 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="englishcake.png" alt="كيك انجليزي"></div><h3 class="product-name">كيك انجليزي</h3><span class="price">8 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="cookis.png" alt="كوكيز فانيلا"></div><h3 class="product-name">كوكيز فانيلا</h3><span class="price">9 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="browneze.png" alt="براونيز"></div><h3 class="product-name">براونيز</h3><span class="price">9 ر.س</span></article>
-        <article class="card"><div class="image-wrap"><img src="prawnez pec.png" alt="براونيز قطع"></div><h3 class="product-name">براونيز قطع</h3><span class="price">9 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="doulchi cake 3.png" alt=" دولتشي كيك" style="--photo-width:83.2474%;--photo-left:8.2647%;--photo-top:-4.3080%" loading="lazy" decoding="async" width="373" height="372"></div><h3 class="product-name"> دولتشي كيك</h3><span class="price">22 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="london cake.png" alt="كيك لندن" style="--photo-width:117.1733%;--photo-left:-4.0150%;--photo-top:-0.2881%" loading="lazy" decoding="async" width="1179" height="803"></div><h3 class="product-name">كيك لندن</h3><span class="price">16 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="pekan cake.png" alt="كيك بيكان" style="--photo-width:84.5862%;--photo-left:8.2270%;--photo-top:-22.8759%" loading="lazy" decoding="async" width="1057" height="1280"></div><h3 class="product-name">كيك بيكان</h3><span class="price">20 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="boding peckan.png" alt="بودينق بيكان" style="--photo-width:125.1040%;--photo-left:-16.1233%;--photo-top:-11.7584%" loading="lazy" decoding="async" width="578" height="431"></div><h3 class="product-name">بودينق بيكان</h3><span class="price">20 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="sanspastian.png" alt=" سان سبستيان" style="--photo-width:90.7297%;--photo-left:4.3919%;--photo-top:-7.9730%" loading="lazy" decoding="async" width="746" height="746"></div><h3 class="product-name"> سان سبستيان</h3><span class="price">20 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="assets/desserts/san-sebastian-round-v2.webp" alt=" سان سبستيان دائري" style="--photo-width:110.0676%;--photo-left:-7.2382%;--photo-top:-8.0743%" loading="lazy" decoding="async" width="1448" height="1086"></div><h3 class="product-name"> سان سبستيان دائري</h3><span class="price">20 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="cocie creem.png" alt="كوكي كريم" style="--photo-width:60.2173%;--photo-left:19.8265%;--photo-top:3.0201%" loading="lazy" decoding="async" width="464" height="538"></div><h3 class="product-name">كوكي كريم</h3><span class="price">16 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="san termeso.png" alt=" سان سبستيان تراميسو" style="--photo-width:86.7904%;--photo-left:6.6048%;--photo-top:1.3088%" loading="lazy" decoding="async" width="549" height="454"></div><h3 class="product-name"> سان سبستيان تراميسو</h3><span class="price">19 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="san marbel.png" alt=" سان سبستيان ماربل" style="--photo-width:89.1332%;--photo-left:5.4334%;--photo-top:0.3015%" loading="lazy" decoding="async" width="550" height="454"></div><h3 class="product-name"> سان سبستيان ماربل</h3><span class="price">19 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="san Chocolate .png" alt="سان سبستيان شوكلاتة" style="--photo-width:90.0000%;--photo-left:5.0000%;--photo-top:-10.0000%" loading="lazy" decoding="async" width="500" height="500"></div><h3 class="product-name">سان سبستيان شوكلاتة</h3><span class="price">19 ر.س</span></article>
+        <!--<article class="card"><div class="image-wrap"><img src="sanred.png" alt="سان سبستيان ريد فلفت" style="--photo-width:82.4889%;--photo-left:9.0634%;--photo-top:-4.7646%" loading="lazy" decoding="async" width="1206" height="1155"></div><h3 class="product-name">سان سبستيان ريد فلفت</h3><span class="price">19 ر.س</span></article>-->
+        <article class="card"><div class="image-wrap"><img src="madreid chees.png" alt="تشيز مدريد" style="--photo-width:96.9935%;--photo-left:5.0000%;--photo-top:6.2072%" loading="lazy" decoding="async" width="1165" height="912"></div><h3 class="product-name">تشيز مدريد</h3><span class="price">19 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="goldn cake.png" alt="الكيكة الذهبية" style="--photo-width:90.5433%;--photo-left:4.8189%;--photo-top:-14.2254%" loading="lazy" decoding="async" width="500" height="500"></div><h3 class="product-name">الكيكة الذهبية</h3><span class="price">19 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="Chocolate Crunch.png" alt="شوكولاتة كرانشي" style="--photo-width:119.0476%;--photo-left:-10.9524%;--photo-top:-36.1905%" loading="lazy" decoding="async" width="500" height="500"></div><h3 class="product-name">شوكولاتة كرانشي</h3><span class="price">18 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="ora cake1 .png" alt="اوبرا كيك" style="--photo-width:112.3699%;--photo-left:-5.9249%;--photo-top:-29.0751%" loading="lazy" decoding="async" width="432" height="432"></div><h3 class="product-name">اوبرا كيك</h3><span class="price">18 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="chocopudding.png" alt="بودينق" style="--photo-width:120.6294%;--photo-left:-12.2028%;--photo-top:-10.0699%" loading="lazy" decoding="async" width="1150" height="928"></div><h3 class="product-name">بودينق</h3><span class="price">17 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="MagicEraser_260319_172526.png" alt="كيك جالكسي" style="--photo-width:122.2951%;--photo-left:-5.0000%;--photo-top:-27.1585%" loading="lazy" decoding="async" width="746" height="746"></div><h3 class="product-name">كيك جالكسي</h3><span class="price">19 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="lava cake.png" alt="لافا كيك" style="--photo-width:90.2730%;--photo-left:5.0000%;--photo-top:-16.2487%" loading="lazy" decoding="async" width="992" height="1076"></div><h3 class="product-name">لافا كيك</h3><span class="price">19 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="assets/desserts/honey-cake-v2.webp" alt="كيك عسل مربع" style="--photo-width:102.6950%;--photo-left:-1.3830%;--photo-top:-2.9551%" loading="lazy" decoding="async" width="1448" height="1086"></div><h3 class="product-name">كيك عسل مربع</h3><span class="price">19 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="wafel asb.png" alt="أصابع الوافل" style="--photo-width:66.6322%;--photo-left:16.5950%;--photo-top:5.5785%" loading="lazy" decoding="async" width="375" height="375"></div><h3 class="product-name"> أصابع الوافل</h3><span class="price">10 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="coucant.png" alt="كيك كوكنت" style="--photo-width:129.8571%;--photo-left:-14.4026%;--photo-top:-12.4156%" loading="lazy" decoding="async" width="1111" height="960"></div><h3 class="product-name">كيك كوكنت</h3><span class="price">18 ر.س</span></article>
+        <!--<article class="card"><div class="image-wrap"><img src="MagicEraser_260320_001709.png" alt="تراميسو" style="--photo-width:110.6748%;--photo-left:-13.5355%;--photo-top:-12.2897%" loading="lazy" decoding="async" width="918" height="825"></div><h3 class="product-name">تراميسو</h3><span class="price">17 ر.س</span></article>-->
+        <article class="card"><div class="image-wrap"><img src="MagicEraser_260319_173222.png" alt="آيس كريم شوكو فانيلا" style="--photo-width:77.8420%;--photo-left:8.3369%;--photo-top:-4.1320%" loading="lazy" decoding="async" width="951" height="1043"></div><h3 class="product-name">آيس كريم شوكو فانيلا</h3><span class="price">18 ر.س</span></article>  
+        <article class="card"><div class="image-wrap"><img src="magloob.png" alt="تشيزكيك توت أزرق" style="--photo-width:106.4407%;--photo-left:-0.2542%;--photo-top:-19.6045%" loading="lazy" decoding="async" width="628" height="628"></div><h3 class="product-name">تشيزكيك توت أزرق</h3><span class="price">19 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="MagicEraser_260320_001719.png" alt="تشيز كيك توت" style="--photo-width:139.5964%;--photo-left:-19.6830%;--photo-top:-30.1643%" loading="lazy" decoding="async" width="606" height="581"></div><h3 class="product-name">تشيز كيك توت</h3><span class="price">18 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="snecrs.png" alt="تشيز كيك سنيكرز" style="--photo-width:133.4637%;--photo-left:-17.2898%;--photo-top:-58.1696%" loading="lazy" decoding="async" width="598" height="563"></div><h3 class="product-name">تشيز كيك سنيكرز</h3><span class="price">17 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="snakerss cake.png" alt="كيك سنيكرز" style="--photo-width:128.1780%;--photo-left:-14.9026%;--photo-top:-44.3811%" loading="lazy" decoding="async" width="1024" height="1000"></div><h3 class="product-name">كيك سنيكرز</h3><span class="price">17 ر.س</span></article>
+       <!-- <article class="card"><div class="image-wrap"><img src="honeycake.png" alt="كيكة عسل" style="--photo-width:109.7724%;--photo-left:-4.1870%;--photo-top:-9.7805%" loading="lazy" decoding="async" width="628" height="628"></div><h3 class="product-name">كيكة عسل</h3><span class="price">15 ر.س</span></article>-->
+        <article class="card"><div class="image-wrap"><img src="carotcake.png" alt="كيكة جزر" style="--photo-width:124.4934%;--photo-left:-14.2291%;--photo-top:-20.4405%" loading="lazy" decoding="async" width="628" height="628"></div><h3 class="product-name">كيكة جزر</h3><span class="price">15 ر.س</span></article> 
+        <!--<article class="card"><div class="image-wrap"><img src="knafh ball 2.png" alt="كرات كنافة" style="--photo-width:107.0604%;--photo-left:4.7527%;--photo-top:5.0000%" loading="lazy" decoding="async" width="433" height="274"></div><h3 class="product-name">كرات كنافة</h3><span class="price">10 ر.س</span></article>-->
+        <article class="card"><div class="image-wrap"><img src="assets/desserts/pancakes-large-v2.webp" alt="بان كيك فيوتين كبير" style="--photo-width:94.5718%;--photo-left:1.5385%;--photo-top:2.3222%" loading="lazy" decoding="async" width="1448" height="1086"></div><h3 class="product-name">بان كيك فيوتين كبير</h3><span class="price">25 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="assets/desserts/pancakes-small-v2.webp" alt="بان كيك فيوتين صغير" style="--photo-width:106.2526%;--photo-left:-2.5759%;--photo-top:-3.1752%" loading="lazy" decoding="async" width="1448" height="1086"></div><h3 class="product-name">بان كيك فيوتين صغير</h3><span class="price">15 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="croason.png" alt="كرواسون" style="--photo-width:113.2665%;--photo-left:-5.4609%;--photo-top:-29.9599%" loading="lazy" decoding="async" width="628" height="628"></div><h3 class="product-name">كرواسون</h3><span class="price">9 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="englishcake.png" alt="كيك انجليزي" style="--photo-width:90.0000%;--photo-left:5.0000%;--photo-top:-11.9303%" loading="lazy" decoding="async" width="746" height="746"></div><h3 class="product-name">كيك انجليزي</h3><span class="price">8 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="cookis.png" alt="كوكيز فانيلا" style="--photo-width:114.7479%;--photo-left:-9.0184%;--photo-top:-19.0680%" loading="lazy" decoding="async" width="628" height="628"></div><h3 class="product-name">كوكيز فانيلا</h3><span class="price">9 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="assets/desserts/brownie-v2.webp" alt="براونيز" style="--photo-width:101.3375%;--photo-left:-0.6687%;--photo-top:-2.2084%" loading="lazy" decoding="async" width="1448" height="1086"></div><h3 class="product-name">براونيز</h3><span class="price">9 ر.س</span></article>
+        <article class="card"><div class="image-wrap"><img src="prawnez pec.png" alt="براونيز قطع" style="--photo-width:98.9442%;--photo-left:0.7349%;--photo-top:1.0385%" loading="lazy" decoding="async" width="1195" height="896"></div><h3 class="product-name">براونيز قطع</h3><span class="price">9 ر.س</span></article>
     </section>
 
     <p class="footer-note">♡ من جارة القمر للحظاتكم الأجمل</p>
@@ -439,7 +463,7 @@ body::before {
 
 <dialog class="product-preview" aria-labelledby="preview-name">
     <button class="preview-close" type="button" aria-label="إغلاق الصورة" autofocus>×</button>
-    <img class="preview-image" alt="">
+    <div class="preview-stage"><img class="preview-image" alt=""></div>
     <h2 class="preview-name" id="preview-name"></h2>
     <p class="price preview-price"></p>
 </dialog>
@@ -465,6 +489,7 @@ body::before {
         trigger.addEventListener('click', () => {
             image.src = source.currentSrc || source.src;
             image.alt = name;
+            image.style.cssText = source.style.cssText;
             title.textContent = name;
             price.textContent = card.querySelector('.price').textContent;
             previousOverflow = document.body.style.overflow;
