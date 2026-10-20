@@ -235,12 +235,65 @@ body::before {
     margin-top: 30px;
     padding-bottom: 20px;
 }
+
+/* تنقل المنيو والعودة للأعلى */
+.menu-nav {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+.menu-nav a {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 10px;
+    border: 1px solid rgba(200,149,42,0.25);
+    border-radius: var(--radius-sm);
+    background: var(--cream-1);
+    color: var(--brown-dark);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+}
+.menu-nav a:hover { background: #ecdfd0; }
+.menu-nav a:focus-visible, .back-to-top:focus-visible {
+    outline: 3px solid var(--brown-mid);
+    outline-offset: 3px;
+}
+.back-to-top {
+    position: fixed;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    left: max(16px, calc((100vw - 420px) / 2 + 16px));
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 10px 14px;
+    border: 1px solid var(--gold);
+    border-radius: 24px;
+    background: var(--brown-dark);
+    color: var(--cream-0);
+    box-shadow: var(--shadow-card);
+    font: 700 12px "Cairo", sans-serif;
+    cursor: pointer;
+}
+.back-to-top[hidden] { display: none; }
+.footer-note { padding-bottom: 80px; }
 </style>
 </head>
 
 <body>
 
 <div class="container">
+    <nav class="menu-nav" aria-label="التنقل بين صفحات المنيو">
+        <a href="index.html" id="menu-home"><i class="fas fa-house" aria-hidden="true"></i> الرئيسية</a>
+        <a href="menu.html"><i class="fas fa-mug-hot" aria-hidden="true"></i> المشروبات</a>
+    </nav>
+
 
     <section class="hero">
         <div class="logo-box">
@@ -305,5 +358,26 @@ body::before {
 
 </div>
 
+
+<button class="back-to-top" type="button" hidden aria-label="العودة إلى أعلى الصفحة">
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    <span>العودة للأعلى</span>
+</button>
+<script>
+(() => {
+    const button = document.querySelector('.back-to-top');
+    const updateVisibility = () => { button.hidden = window.scrollY < 400; };
+    window.addEventListener('scroll', updateVisibility, { passive: true });
+    window.addEventListener('pageshow', updateVisibility);
+    updateVisibility();
+    button.addEventListener('click', () => {
+        document.getElementById('menu-home').focus({ preventScroll: true });
+        window.scrollTo({
+            top: 0,
+            behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+        });
+    });
+})();
+</script>
 </body>
 </html>
