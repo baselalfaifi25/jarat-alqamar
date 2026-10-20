@@ -16,7 +16,7 @@
   --radius:20px;--radius-sm:12px;
 }
 
-body{font-family:"Cairo",sans-serif;background:var(--cream-0);min-height:100vh;display:flex;justify-content:center;overflow-x:hidden;}
+body{font-family:"Thmanyah Arabic","Cairo",sans-serif;background:var(--cream-0);min-height:100vh;display:flex;justify-content:center;overflow-x:hidden;}
 .shell{width:390px;min-height:100dvh;background:var(--cream-0);position:relative;overflow:hidden;box-shadow:0 0 80px rgba(0,0,0,0.2);}
 .shell::before{content:'';position:fixed;inset:0;width:390px;pointer-events:none;z-index:0;
   background:radial-gradient(ellipse 300px 220px at 80% -5%,rgba(200,149,42,0.06) 0%,transparent 70%),
@@ -122,7 +122,7 @@ body{font-family:"Cairo",sans-serif;background:var(--cream-0);min-height:100vh;d
   transition:transform 0.2s,box-shadow 0.2s,background 0.2s,border-color 0.2s;-webkit-tap-highlight-color:transparent;}
 
 .soc-btn i{font-size:22px;}
-.soc-btn span{font-size:9px;font-weight:700;font-family:"Cairo",sans-serif;color:rgba(90,50,16,0.35);}
+.soc-btn span{font-size:9px;font-weight:700;font-family:"Thmanyah Arabic","Cairo",sans-serif;color:rgba(90,50,16,0.35);}
 .soc-btn:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,0.09);}
 .soc-wa:hover{background:rgba(230,255,240,0.95);border-color:rgba(37,211,102,0.28);}
 .soc-wa i{color:#1aad57;}
@@ -143,6 +143,8 @@ body{font-family:"Cairo",sans-serif;background:var(--cream-0);min-height:100vh;d
 /* loading skeleton */
 .ann-skeleton{height:180px;border-radius:var(--radius);background:linear-gradient(90deg,#2e1805 0%,#4a2810 50%,#2e1805 100%);background-size:200% 100%;animation:shimmer 1.5s infinite;margin:14px 0 4px;}
 @keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+
+@font-face{font-family:"Thmanyah Arabic";src:url("assets/fonts/thmanyah-serif-display-medium.woff") format("woff");font-style:normal;font-weight:500;font-display:swap;unicode-range:U+0600-065F,U+066A-06EF,U+06FA-06FF,U+0750-077F,U+0870-089F,U+08A0-08FF,U+FB50-FDFF,U+FE70-FEFF;}
 </style>
 </head>
 
