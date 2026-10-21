@@ -145,6 +145,38 @@ body{font-family:"Thmanyah Arabic","Cairo",sans-serif;background:var(--cream-0);
 @keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
 
 @font-face{font-family:"Thmanyah Arabic";src:url("assets/fonts/thmanyah-serif-display-medium.woff") format("woff");font-style:normal;font-weight:500;font-display:swap;unicode-range:U+0600-065F,U+066A-06EF,U+06FA-06FF,U+0750-077F,U+0870-089F,U+08A0-08FF,U+FB50-FDFF,U+FE70-FEFF;}
+/* Compact home layout with clear menu priority. */
+.shell{width:100%;max-width:480px;box-shadow:none;}
+.shell::before{display:none;}
+.hero{position:relative;padding:24px 20px 14px;}
+.logo-ring{width:100px;height:100px;margin-bottom:6px;}
+.cafe-sub{color:#78634e;letter-spacing:2px;}
+.hero-div{margin-top:12px;}
+.content{padding:12px 20px 24px;gap:10px;}
+.orn{margin:0 0 2px;}
+.action-card{gap:12px;padding:13px 14px;border:1px solid #d9c6a9;border-radius:16px;box-shadow:0 2px 8px rgba(46,24,5,.035);}
+.action-card::after{display:none;}
+.card-drinks,.card-dessert{background:#f1e5d1;}
+.card-loyalty,.card-map{background:#fcf8ef;padding:10px 14px;border-color:#e2d5c1;box-shadow:none;}
+.card-body{display:flex;flex-direction:column;align-items:flex-start;min-width:0;gap:3px;}
+.card-title{display:block;font-size:18px;line-height:1.5;font-weight:500;}
+.card-sub{display:block;direction:ltr;text-align:left;margin:0;font-size:10px;line-height:1.5;letter-spacing:.8px;color:#79644e;}
+.card-icon-wrap{width:42px;height:42px;border-radius:12px;font-size:19px;background:#e7d5b9;color:#805629;}
+.card-loyalty .card-icon-wrap,.card-map .card-icon-wrap{width:34px;height:34px;font-size:16px;background:#f0e7d7!important;color:#805629!important;}
+.card-loyalty .card-title,.card-map .card-title{font-size:16px;}
+.card-arrow{font-size:12px;color:#8c7255;}
+.action-card:hover{transform:translateY(-1px);box-shadow:0 3px 10px rgba(46,24,5,.07);border-color:#b99b73;}
+.action-card:focus-visible,.soc-btn:focus-visible{outline:2px solid #805629;outline-offset:3px;}
+.soc-label{margin-top:8px;font-size:12px;letter-spacing:0;color:#79644e;font-weight:500;}
+.soc-row{gap:8px;}
+.soc-btn{gap:4px;padding:10px 3px;border-radius:12px;background:#fffdf8;border-color:#e8ddcd;box-shadow:none;}
+.soc-btn i{font-size:20px;}
+.soc-btn span{font-size:11px;line-height:1.6;color:#705b45;font-weight:500;}
+.soc-tiktok i{color:#30251e;}
+.soc-btn:hover{transform:translateY(-1px);box-shadow:0 3px 10px rgba(46,24,5,.06);}
+.footer-line{padding-top:8px;font-size:11px;line-height:1.8;letter-spacing:0;color:#79644e;font-weight:500;}
+@media(max-width:360px){.content{padding-right:16px;padding-left:16px;}.action-card{gap:10px;}.card-title{font-size:17px;}.card-sub{font-size:9px;}}
+@media(prefers-reduced-motion:reduce){.fade-up{animation:none;}.action-card,.soc-btn,#ann-wrap{transition:none;}}
 </style>
 </head>
 
@@ -196,7 +228,7 @@ body{font-family:"Thmanyah Arabic","Cairo",sans-serif;background:var(--cream-0);
     <a href="https://loyapro.com/c-r/NzkzMw==" target="_blank" class="action-card card-loyalty fade-up d4">
       <span class="card-icon-wrap" style="color: #c8952a; background: rgba(200,149,42,0.15);"><i class="fas fa-crown"></i></span>
       <span class="card-body">
-        <span class="card-title">انضم إلى الولاء</span>
+        <span class="card-title">برنامج الولاء</span>
         <span class="card-sub">Loyalty Program</span>
       </span>
       <i class="fas fa-chevron-left card-arrow"></i>
@@ -205,7 +237,7 @@ body{font-family:"Thmanyah Arabic","Cairo",sans-serif;background:var(--cream-0);
     <a href="https://maps.app.goo.gl/EdWLHkH9VfmzNYXz9?g_st=ic" target="_blank" class="action-card card-map fade-up d5">
       <span class="card-icon-wrap"><i class="fas fa-location-dot"></i></span>
       <span class="card-body">
-        <span class="card-title">تجدونا هنا</span>
+        <span class="card-title">موقع المقهى</span>
         <span class="card-sub">Find Us on Maps</span>
       </span>
       <i class="fas fa-chevron-left card-arrow"></i>
@@ -292,3 +324,4 @@ loadAnnouncement();
 
 </body>
 </html>
+
