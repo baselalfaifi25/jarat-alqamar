@@ -41,7 +41,7 @@
       border-radius: 28px;
       box-shadow: 0 8px 40px #39210b0b;
     }
-    .site-header, .site-nav, .title-row, .item, .price {
+    .site-header, .site-nav, .item, .price {
       display: flex;
       align-items: center;
     }
@@ -53,9 +53,8 @@
     .site-nav a { padding: 8px 0; text-decoration: none; }
     .site-nav a:hover { text-decoration: underline; }
     .intro { padding: 32px 0 24px; text-align: center; }
-    .title-row { justify-content: center; flex-wrap: wrap; gap: 4px 9px; }
     h1 { margin: 0; font-size: clamp(23px, 5.8vw, 32px); }
-    .hours { color: var(--muted); font-size: 14px; white-space: nowrap; }
+    .hours { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
     .intro .translation { margin: 6px 0 0; font-size: 14px; line-height: 1.55; }
     h2 { margin: 0; padding-bottom: 8px; border-bottom: 1px solid var(--border); font-size: 21px; }
     .items { list-style: none; margin: 0; padding: 0; }
@@ -89,10 +88,8 @@
     </header>
 
     <div class="intro">
-      <div class="title-row">
-        <h1>الإفطار والساندويتشات</h1>
-        <span class="hours">(متوفر طوال ساعات العمل)</span>
-      </div>
+      <h1>الإفطار والساندويتشات</h1>
+      <p class="hours">(متوفر طوال ساعات العمل)</p>
       <p class="translation" lang="en" dir="ltr">
         Breakfast &amp; Sandwiches
       </p>
