@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fdfaf3">
+  <title>الإفطار والساندويتشات | جارة القمر</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: "Thmanyah Arabic";
+      src: url("assets/fonts/thmanyah-serif-display-medium.woff") format("woff");
+      font-weight: 500;
+      font-display: swap;
+      unicode-range: U+0600-065F,U+066A-06EF,U+06FA-06FF,U+0750-077F,U+0870-089F,U+08A0-08FF,U+FB50-FDFF,U+FE70-FEFF;
+    }
+    :root {
+      --cream: #fdfaf3;
+      --brown: #2e1805;
+      --muted: #705b45;
+      --border: #e7dbca;
+      --accent: #805629;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #f5efe6;
+      color: var(--brown);
+      font-family: "Thmanyah Arabic", Cairo, Tahoma, Arial, sans-serif;
+    }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    .page {
+      max-width: 640px;
+      margin: 24px auto;
+      padding: 28px 32px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: 0 8px 40px #39210b0b;
+    }
+    .site-header, .site-nav, .title-row, .item, .price {
+      display: flex;
+      align-items: center;
+    }
+    .site-header { justify-content: space-between; gap: 12px; }
+    .brand { text-decoration: none; }
+    .brand small, .translation { display: block; color: var(--muted); }
+    .brand small { font-size: 10px; }
+    .site-nav { flex-wrap: wrap; gap: 4px 14px; font-size: 13px; }
+    .site-nav a { padding: 8px 0; text-decoration: none; }
+    .site-nav a:hover { text-decoration: underline; }
+    .intro { padding: 32px 0 24px; text-align: center; }
+    .title-row { justify-content: center; flex-wrap: wrap; gap: 4px 9px; }
+    h1 { margin: 0; font-size: clamp(23px, 5.8vw, 32px); }
+    .hours { color: var(--muted); font-size: 14px; white-space: nowrap; }
+    .intro .translation { margin: 6px 0 0; font-size: 14px; line-height: 1.55; }
+    .intro .translation small { display: block; font-size: 12px; }
+    h2 { margin: 0; padding-bottom: 8px; border-bottom: 1px solid var(--border); font-size: 21px; }
+    .items { list-style: none; margin: 0; padding: 0; }
+    .item { justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .item-info { display: flex; align-items: center; gap: 10px; }
+    .item-photo { width: clamp(60px, 18vw, 92px); height: auto; aspect-ratio: 1; object-fit: contain; flex: none; border-radius: 9px; background: #f2e8da; }
+    .item p { margin: 0; }
+    .item-name { font-size: 17px; }
+    .item .translation { text-align: right; font-size: 13px; }
+    .price { gap: 6px; color: var(--accent); font-size: 18px; font-weight: 700; }
+    .riyal-symbol { width: .85em; height: .95em; flex-shrink: 0; }
+    .footer { margin: 24px 0 0; color: var(--muted); text-align: center; font-size: 12px; }
+    @media (max-width: 680px) {
+      .page { margin: 0; padding: 22px 18px 28px; border: 0; border-radius: 0; }
+      .site-nav { gap: 4px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="جارة القمر، الرئيسية">
+        <strong>جارة القمر</strong>
+        <small lang="en" dir="ltr">JARAT ALQAMAR</small>
+      </a>
+      <nav class="site-nav" aria-label="التنقل بين صفحات المنيو">
+        <a href="index.html">الرئيسية</a>
+        <a href="menu.html">المشروبات</a>
+        <a href="dessert.html">الحلويات</a>
+      </nav>
+    </header>
+
+    <div class="intro">
+      <div class="title-row">
+        <h1>الإفطار والساندويتشات</h1>
+        <span class="hours">(متوفر طوال ساعات العمل)</span>
+      </div>
+      <p class="translation" lang="en" dir="ltr">
+        Breakfast &amp; Sandwiches
+        <small>Available throughout opening hours</small>
+      </p>
+    </div>
+
+    <section aria-labelledby="products-heading">
+      <h2 id="products-heading">الأصناف</h2>
+      <ul class="items">
+        <li class="item">
+          <div class="item-info">
+            <img class="item-photo" src="assets/breakfast/areeka.webp" alt="" width="512" height="512" decoding="async">
+            <div>
+              <p class="item-name">عريكة بر (سمن وعسل بلدي)</p>
+              <p class="translation" lang="en" dir="ltr">Whole Wheat Areeka (Ghee &amp; Local Honey)</p>
+            </div>
+          </div>
+          <span class="price"><bdi dir="ltr">35</bdi> <svg class="riyal-symbol" viewBox="0 0 1124.14 1256.39" fill="currentColor" role="img" aria-label="ريال سعودي" focusable="false"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"/><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"/></svg></span>
+        </li>
+        <li class="item">
+          <div class="item-info">
+            <img class="item-photo" src="assets/breakfast/halloumi.webp" alt="" width="512" height="512" decoding="async">
+            <div>
+              <p class="item-name">ساندويتش حلومي</p>
+              <p class="translation" lang="en" dir="ltr">Halloumi Sandwich</p>
+            </div>
+          </div>
+          <span class="price"><bdi dir="ltr">15</bdi> <svg class="riyal-symbol" viewBox="0 0 1124.14 1256.39" fill="currentColor" role="img" aria-label="ريال سعودي" focusable="false"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"/><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"/></svg></span>
+        </li>
+        <li class="item">
+          <div class="item-info">
+            <img class="item-photo" src="assets/breakfast/three-cheese.webp" alt="" width="512" height="512" decoding="async">
+            <div>
+              <p class="item-name">ساندويتش ثلاث أجبان</p>
+              <p class="translation" lang="en" dir="ltr">Three-Cheese Sandwich</p>
+            </div>
+          </div>
+          <span class="price"><bdi dir="ltr">15</bdi> <svg class="riyal-symbol" viewBox="0 0 1124.14 1256.39" fill="currentColor" role="img" aria-label="ريال سعودي" focusable="false"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"/><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"/></svg></span>
+        </li>
+        <li class="item">
+          <div class="item-info">
+            <img class="item-photo" src="croason.png" alt="" width="628" height="628" decoding="async">
+            <div>
+              <p class="item-name">كرواسون</p>
+              <p class="translation" lang="en" dir="ltr">Croissant</p>
+            </div>
+          </div>
+          <span class="price"><bdi dir="ltr">9</bdi> <svg class="riyal-symbol" viewBox="0 0 1124.14 1256.39" fill="currentColor" role="img" aria-label="ريال سعودي" focusable="false"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"/><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"/></svg></span>
+        </li>
+      </ul>
+    </section>
+
+    <p class="footer">♡ من جارة القمر للحظاتكم الأجمل</p>
+  </main>
+</body>
+</html>
